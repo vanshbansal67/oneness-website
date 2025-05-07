@@ -1,0 +1,1753 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oneness Solar Power</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #106b21;
+            --secondary-color: #e9f4e9;
+            --accent-color: #f9a825;
+            --text-dark: #333;
+            --text-light: #f5f5f5;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+        }
+
+        .btn:hover {
+            background-color: #085116;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .logo-text {
+            margin-left: 10px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            padding: 8px 5px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .get-quote-btn {
+            padding: 10px 18px;
+            background-color: var(--accent-color);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(249, 168, 37, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(249, 168, 37, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(249, 168, 37, 0);
+            }
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            background-image: url('/api/placeholder/1200/700');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .hero:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 600px;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s;
+            animation-fill-mode: both;
+        }
+
+        .hero-content .btn {
+            animation: fadeInUp 1s ease 0.4s;
+            animation-fill-mode: both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--secondary-color);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 20px;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .service-content p {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        /* Installation Process Section */
+        .process-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .tab-btn {
+            padding: 12px 25px;
+            background-color: #e0e0e0;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:first-child {
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+        }
+
+        .tab-btn:last-child {
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .process-content {
+            display: none;
+        }
+
+        .process-content.active {
+            display: block;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background-color: var(--primary-color);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 30px;
+            position: relative;
+            margin-bottom: 50px;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(even) {
+            margin-left: auto;
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 30px;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--primary-color);
+            border-radius: 50%;
+            top: 20px;
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even):before {
+            right: auto;
+            left: -10px;
+        }
+
+        .timeline-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            max-width: 400px;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        /* Why Choose Us Section */
+        .why-choose-us {
+            background-color: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-box {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-box h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-box p {
+            color: #666;
+        }
+
+        /* Stats Section */
+        .stats {
+            background-image: url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-attachment: fixed;
+            position: relative;
+            color: white;
+        }
+
+        .stats:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+
+        .stats-container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-num {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .stat-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Calculator Section */
+        .calculator {
+            background-color: var(--secondary-color);
+        }
+
+        .calculator-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .calculator-img {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .calculator-img img {
+            width: 100%;
+            height: auto;
+        }
+
+        .calculator-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .calculator-form .btn {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: white;
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-item {
+            background-color: var(--secondary-color);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+            display: none;
+        }
+
+        .testimonial-item.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .testimonial-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+        }
+
+        .testimonial-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .testimonial-location {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .testimonial-rating {
+            color: #f8ce0b;
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .slider-control {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .slider-control:hover {
+            background-color: #085116;
+        }
+
+        /* Projects Section */
+        .projects {
+            background-color: var(--secondary-color);
+        }
+
+        .filter-btns {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background-color: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .project-item {
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .project-img {
+            height: 250px;
+        }
+
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-item:hover .project-img img {
+            transform: scale(1.1);
+        }
+
+        .project-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .project-item:hover .project-info {
+            transform: translateY(0);
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .project-details {
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .contact-info {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+        }
+
+        .newsletter-form button {
+            padding: 10px 15px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            cursor: pointer;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Media Queries */
+        @media (max-width: 1100px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+
+            .services-grid,
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .calculator-container {
+                grid-template-columns: 1fr;
+            }
+
+            .calculator-img {
+                display: none;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 15px;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: var(--shadow);
+            }
+
+            nav ul.mobile-open {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .get-quote-btn {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline:before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 0;
+                justify-content: flex-start;
+            }
+
+            .timeline-item:nth-child(even) {
+                padding-left: 50px;
+            }
+
+            .timeline-item:before,
+            .timeline-item:nth-child(even):before {
+                left: 10px;
+                right: auto;
+            }
+
+            .features-grid,
+            .services-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                flex-direction: column;
+            }
+
+            .stat-item {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/api/placeholder/50/50" alt="Oneness Solar Logo">
+                    <div class="logo-text">
+                        <h1>ONENESS</h1>
+                        <p>Your Sustainable Energy Solutions</p>
+                    </div>
+                </div>
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav>
+                    <ul id="navMenu">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <a href="#contact" class="btn get-quote-btn">Get Quote</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>The Future of Green Energy</h1>
+                <p>Transform your energy consumption with our comprehensive solar solutions tailored for residential,
+                    agricultural, and industrial needs.</p>
+                <a href="#calculator" class="btn">Get Estimate Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">Our Recent Projects</h2>
+
+            <div class="filter-btns">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="residential">Residential</button>
+                <button class="filter-btn" data-filter="agricultural">Agricultural</button>
+                <button class="filter-btn" data-filter="industrial">Industrial</button>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-item" data-category="residential" data-aos="fade-up">
+                    <div class="project-img">
+                        <img src="/api/placeholder/400/250" alt="Residential Project">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Villa Solar Installation</h3>
+                        <p class="project-details">Location: Gurugram | System Size: 8kW | Energy Output: 32kWh/day</p>
+                    </div>
+                </div>
+
+                <div class="project-item" data-category="agricultural" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-img">
+                        <img src="/api/placeholder/400/250" alt="Agricultural Project">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Farm Solar Pump System</h3>
+                        <p class="project-details">Location: Punjab | System Size: 15kW | Energy Output: 60kWh/day</p>
+                    </div>
+                </div>
+
+                <div class="project-item" data-category="industrial" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-img">
+                        <img src="/api/placeholder/400/250" alt="Industrial Project">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Factory Rooftop Solar</h3>
+                        <p class="project-details">Location: Chennai | System Size: 100kW | Energy Output: 400kWh/day
+                        </p>
+                    </div>
+                </div>
+
+                <div class="project-item" data-category="residential" data-aos="fade-up">
+                    <div class="project-img">
+                        <img src="/api/placeholder/400/250" alt="Residential Project">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Apartment Complex Solar</h3>
+                        <p class="project-details">Location: Mumbai | System Size: 25kW | Energy Output: 100kWh/day</p>
+                    </div>
+                </div>
+
+                <div class="project-item" data-category="agricultural" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-img">
+                        <img src="/api/placeholder/400/250" alt="Agricultural Project">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Agricultural Solar Fencing</h3>
+                        <p class="project-details">Location: Karnataka | System Size: 5kW | Area Coverage: 10 acres</p>
+                    </div>
+                </div>
+
+                <div class="project-item" data-category="industrial" data-aos="fade-up" data-aos-delay="400">
+                    <div class="project-img">
+                        <img src="/api/placeholder/400/250" alt="Industrial Project">
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Commercial Solar Carport</h3>
+                        <p class="project-details">Location: Hyderabad | System Size: 50kW | Energy Output: 200kWh/day
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <p>Oneness Solar Power specializes in providing sustainable solar energy solutions for residential,
+                        commercial, and industrial clients. Our mission is to deliver innovative and efficient Solar
+                        Power System that promote environmental sustainability and Energy Independence.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#calculator">Solar Calculator</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Residential Solar</a></li>
+                        <li><a href="#">Commercial Solar</a></li>
+                        <li><a href="#">Industrial Solar</a></li>
+                        <li><a href="#">Solar Maintenance</a></li>
+                        <li><a href="#">Energy Consulting</a></li>
+                        <li><a href="#">Battery Storage</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <p><strong>Reg. office:</strong><br>HN - 38A, Vill - Toda Khet,<br>Sohna (Gurugram) Haryana
+                                122103</p>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <p><strong>Sitting office:</strong><br>First Gandhi Colony, Sector 7<br>Gurugram Haryana
+                                122001</p>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <p>info.onenessolarpower@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <p>+91(9015095972)</p>
+                            <p>+91(8882273726)</p>
+                        </div>
+                    </div>
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for updates</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2024 Oneness Solar Power. All right reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+
+        // Mobile Navigation
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('mobile-open');
+        });
+
+        // Process Tabs
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const processContents = document.querySelectorAll('.process-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-target');
+
+                // Remove active class from all buttons and contents
+                tabBtns.forEach(btn => btn.classList.remove('active'));
+                processContents.forEach(content => content.classList.remove('active'));
+
+                // Add active class to clicked button and corresponding content
+                btn.classList.add('active');
+                document.getElementById(`${target}-process`).classList.add('active');
+            });
+        });
+
+        // Testimonial Slider
+        const testimonials = document.querySelectorAll('.testimonial-item');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+
+            if (index < 0) {
+                currentSlide = testimonials.length - 1;
+            } else if (index >= testimonials.length) {
+                currentSlide = 0;
+            } else {
+                currentSlide = index;
+            }
+
+            testimonials[currentSlide].classList.add('active');
+        }
+
+        prevBtn.addEventListener('click', () => {
+            showSlide(currentSlide - 1);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            showSlide(currentSlide + 1);
+        });
+
+        // Auto slide testimonials
+        setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000);
+
+        // Project Filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectItems = document.querySelectorAll('.project-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.getAttribute('data-filter');
+
+                // Remove active class from all buttons
+                filterBtns.forEach(btn => btn.classList.remove('active'));
+
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                // Filter projects
+                projectItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+
+                    if (filter === 'all' || filter === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Stats Counter Animation
+        const statNums = document.querySelectorAll('.stat-num');
+
+        function startCounters() {
+            statNums.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-count'));
+                const increment = target / 100;
+                let current = 0;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    stat.textContent = Math.floor(current);
+
+                    if (current >= target) {
+                        stat.textContent = target;
+                        clearInterval(timer);
+                    }
+                }, 20);
+            });
+        }
+
+        // Start counters when stats section is in view
+        const statsSection = document.querySelector('.stats');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(statsSection);
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile menu if open
+                    if (navMenu.classList.contains('mobile-open')) {
+                        navMenu.classList.remove('mobile-open');
+                    }
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.backgroundColor = 'white';
+                header.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Form Submission
+        const solarCalculator = document.getElementById('solar-calculator');
+
+        solarCalculator.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your interest! We will calculate your potential savings and contact you soon.');
+        });
+    </script>
+</body>
+
+</html>
+
+<!-- Services Section -->
+<section class="services" id="services">
+    <div class="container">
+        <h2 class="section-title">Our Solar Services</h2>
+        <div class="services-grid">
+            <!-- Residential Solar -->
+            <div class="service-card" data-aos="fade-up">
+                <div class="service-img">
+                    <img src="/api/placeholder/400/200" alt="Residential Solar">
+                </div>
+                <div class="service-content">
+                    <h3>Residential Solar</h3>
+                    <p>Power your home with clean, renewable energy. Our residential solar solutions help you reduce
+                        electricity bills and carbon footprint.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Agricultural Solar -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-img">
+                    <img src="/api/placeholder/400/200" alt="Agricultural Solar">
+                </div>
+                <div class="service-content">
+                    <h3>Agricultural Solar</h3>
+                    <p>Sustainable energy solutions for farms and agricultural operations. Reduce costs and increase
+                        efficiency with solar power.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+
+            <!-- Industrial Solar -->
+            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="service-img">
+                    <img src="/api/placeholder/400/200" alt="Industrial Solar">
+                </div>
+                <div class="service-content">
+                    <h3>Industrial Solar</h3>
+                    <p>Large-scale solar solutions for industries and commercial buildings. Maximize energy savings and
+                        meet sustainability goals.</p>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Installation Process Section -->
+<section class="process" id="process">
+    <div class="container">
+        <h2 class="section-title">Our Installation Process</h2>
+
+        <div class="process-tabs">
+            <button class="tab-btn active" data-target="residential">Residential</button>
+            <button class="tab-btn" data-target="agricultural">Agricultural</button>
+            <button class="tab-btn" data-target="industrial">Industrial</button>
+        </div>
+
+        <!-- Residential Process -->
+        <div class="process-content active" id="residential-process">
+            <div class="timeline">
+                <div class="timeline-item" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <h3>1. Site Survey</h3>
+                        <p>We conduct a comprehensive assessment of your property to determine the optimal placement and
+                            size of solar panels.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <h3>6. Monitoring and Maintenance</h3>
+                        <p>We implement advanced monitoring systems and provide ongoing maintenance for your industrial
+                            solar installation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="why-choose-us" id="about">
+    <div class="container">
+        <h2 class="section-title">Why Choose Us?</h2>
+
+        <div class="features-grid">
+            <div class="feature-box" data-aos="fade-up">
+                <div class="feature-icon">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3>Experienced Engineers</h3>
+                <p>Founded by expert engineers with deep knowledge in designing, modeling, and installing solar systems.
+                </p>
+            </div>
+
+            <div class="feature-box" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-icon">
+                    <i class="fas fa-solar-panel"></i>
+                </div>
+                <h3>Comprehensive Solar Solutions</h3>
+                <p>From supply to installation, testing, commissioning and after-sales services - we manage everything
+                    end-to-end.</p>
+            </div>
+
+            <div class="feature-box" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <h3>Trusted Project Execution</h3>
+                <p>Successfully completed diverse projects across India handling all kinds of challenges: terrain, soil,
+                    weather.</p>
+            </div>
+
+            <div class="feature-box" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h3>Authorized Vendor Partnerships</h3>
+                <p>Proud authorized vendor for TATA products, ensuring highest quality and reliability for all
+                    installations.</p>
+            </div>
+
+            <div class="feature-box" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-icon">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <h3>Turnkey & EPC Solutions</h3>
+                <p>Expertise in providing full EPC solutions under BOOT and CAPEX models with a highly professional
+                    approach.</p>
+            </div>
+
+            <div class="feature-box" data-aos="fade-up" data-aos-delay="500">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>Strong After-Sales Support</h3>
+                <p>Genuine spare parts, maintenance contracts, and dedicated customer support for worry-free operation.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats">
+    <div class="container">
+        <div class="stats-container">
+            <div class="stat-item" data-aos="fade-up">
+                <div class="stat-num" data-count="35">0</div>
+                <div class="stat-text">Years of Experience</div>
+            </div>
+
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-num" data-count="1200">0</div>
+                <div class="stat-text">Satisfied Customers</div>
+            </div>
+
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
+                <div class="stat-num" data-count="10000">0</div>
+                <div class="stat-text">Installations</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Calculator Section -->
+<section class="calculator" id="calculator">
+    <div class="container">
+        <h2 class="section-title">Solar Calculator</h2>
+
+        <div class="calculator-container">
+            <div class="calculator-img">
+                <img src="/api/placeholder/600/400" alt="Solar Installation">
+            </div>
+
+            <div class="calculator-form" data-aos="fade-left">
+                <h3 class="text-center">Calculate Your Savings</h3>
+                <form id="solar-calculator">
+                    <div class="form-group">
+                        <label for="energy-bill">Monthly Energy Bill (₹)</label>
+                        <input type="number" id="energy-bill" placeholder="Enter your average monthly bill">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="roof-area">Available Roof Area (sq.ft)</label>
+                        <input type="number" id="roof-area" placeholder="Approximate roof area">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location">Your Location</label>
+                        <input type="text" id="location" placeholder="City, State">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="property-type">Property Type</label>
+                        <select id="property-type">
+                            <option value="">Select Property Type</option>
+                            <option value="residential">Residential</option>
+                            <option value="commercial">Commercial</option>
+                            <option value="industrial">Industrial</option>
+                            <option value="agricultural">Agricultural</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn">Calculate My Savings</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials" id="testimonials">
+    <div class="container">
+        <h2 class="section-title">What Our Customers Say</h2>
+
+        <div class="testimonial-slider">
+            <div class="testimonial-item active">
+                <div class="testimonial-img">
+                    <img src="/api/placeholder/80/80" alt="Customer">
+                </div>
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"Oneness Solar Power transformed our home's energy consumption. The
+                    installation was professional and quick, and we're saving significantly on our electricity bills."
+                </p>
+                <h4 class="testimonial-name">Rajesh Sharma</h4>
+                <p class="testimonial-location">Delhi</p>
+            </div>
+
+            <div class="testimonial-item">
+                <div class="testimonial-img">
+                    <img src="/api/placeholder/80/80" alt="Customer">
+                </div>
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"As a farm owner, I was skeptical about solar energy. Oneness team explained
+                    everything clearly and now my agricultural operations run almost entirely on solar power. Excellent
+                    service!"</p>
+                <h4 class="testimonial-name">Sukhbir Singh</h4>
+                <p class="testimonial-location">Punjab</p>
+            </div>
+
+            <div class="testimonial-item">
+                <div class="testimonial-img">
+                    <img src="/api/placeholder/80/80" alt="Customer">
+                </div>
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="testimonial-text">"Our manufacturing facility's energy costs were skyrocketing. Oneness
+                    designed a custom industrial solar solution that has reduced our costs by 60%. Their after-sales
+                    service is impeccable."</p>
+                <h4 class="testimonial-name">Priya Patel</h4>
+                <p class="testimonial-location">Gujarat</p>
+            </div>
+
+            <div class="slider-controls">
+                <button class="slider-control prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-control next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </div>
+</section>>6. Inspection and Handover</h3>
+<p>Final inspection is conducted and we walk you through your new solar system before official handover.</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Agricultural Process -->
+<div class="process-content" id="agricultural-process">
+    <div class="timeline">
+        <div class="timeline-item" data-aos="fade-right">
+            <div class="timeline-content">
+                <h3>1. Site Assessment</h3>
+                <p>We evaluate your agricultural property to determine the best solar solution for your energy needs.
+                </p>
+            </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-left">
+            <div class="timeline-content">
+                <h3>2. Design and Planning</h3>
+                <p>We create a custom design that maximizes energy production while preserving valuable farmland.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-right">
+            <div class="timeline-content">
+                <h3>3. Procurement</h3>
+                <p>We source durable, weather-resistant equipment suitable for agricultural environments.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-left">
+            <div class="timeline-content">
+                <h3>4. Installation</h3>
+                <p>Our specialized team installs your system with minimal disruption to your agricultural operations.
+                </p>
+            </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-right">
+            <div class="timeline-content">
+                <h3>5. Testing and Commissioning</h3>
+                <p>We thoroughly test your system to ensure it meets all performance specifications.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-left">
+            <div class="timeline-content">
+                <h3>6. Maintenance</h3>
+                <p>We provide ongoing maintenance services to ensure optimal performance of your agricultural solar
+                    system.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Industrial Process -->
+<div class="process-content" id="industrial-process">
+    <div class="timeline">
+        <div class="timeline-item" data-aos="fade-right">
+            <div class="timeline-content">
+                <h3>1. Energy Audit</h3>
+                <p>We conduct a comprehensive energy audit to understand your industrial energy consumption patterns.
+                </p>
+            </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-left">
+            <div class="timeline-content">
+                <h3>2. Feasibility Study</h3>
+                <p>We analyze the technical and financial feasibility of implementing solar energy for your industrial
+                    facility.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-right">
+            <div class="timeline-content">
+                <h3>3. System Design</h3>
+                <p>Our engineers design a large-scale solar system tailored to your industrial energy requirements.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-left">
+            <div class="timeline-content">
+                <h3>4. Installation</h3>
+                <p>We deploy our experienced team to install your industrial-scale solar system with precision and
+                    efficiency.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-right">
+            <div class="timeline-content">
+                <h3>5. Grid Connection</h3>
+                <p>We handle all technical aspects of connecting your large-scale system to the power grid.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-left">
+            <div class="timeline-content">
+                <h3>2. Design and Approval</h3>
+                <p>Our engineers create a customized design and obtain all necessary permits and approvals for your
+                    installation.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-right">
+            <div class="timeline-content">
+                <h3>3. Procurement</h3>
+                <p>We source high-quality solar panels and equipment from reputable manufacturers for your installation.
+                </p>
+            </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-left">
+            <div class="timeline-content">
+                <h3>4. Installation</h3>
+                <p>Our experienced technicians install your solar system with precision and care, ensuring optimal
+                    performance.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-right">
+            <div class="timeline-content">
+                <h3>5. Connection</h3>
+                <p>We connect your solar system to the grid and ensure everything is working correctly.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item" data-aos="fade-left">
+            <div class="timeline-content">
+                <h3
