@@ -5,16 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oneness Solar Power</title>
+    <!-- remix icon -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <!-- Font Awesome for social media icons -->
+
+    <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- font Family -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- bootstrap  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+    <!-- Aos Animation -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
     <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/animations.css">
+
     <style>
 
     </style>
@@ -24,22 +34,51 @@
     <!-- Navbar load -->
     <div id="NavAdder">
     </div>
-    <!-- Front Page -->
+
+    <!-- Home Page with carousel -->
     <section>
-        <div class="Home" id="Home-1">
-            <div class="image"></div>
-            <div class="text-overlay">
-                <div class="heading">
-                    <p>We Provide <br> <span>Solar Energy</span> Source</p>
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-pause="false">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner Home">
+                <div class="carousel-item active " data-bs-interval="3000">
+                    <img src="images/industrial-solar.png" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block text-overlay">
+                        <h5>First slide label</h5>
+                        <p>Some representative placeholder content for the first slide.</p>
+                    </div>
                 </div>
-                <div class="para">Our Solar Power Plant Company Delivers clean, Renewable Energy Solutions. We Harness
-                    Sunlight
-                    To Generate Sustainable Electricity, Reduce Carbon Emissions,Empower Communities, And Drive
-                    Innovation For A Greener, Brighter Future.
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="images/residential-solar.jpg" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block text-overlay">
+                        <h5>Second slide label</h5>
+                        <p>Some representative placeholder content for the second slide.</p>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="images/commercial solar.png" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block text-overlay">
+                        <h5>Third slide label</h5>
+                        <p>Some representative placeholder content for the third slide.</p>
+                    </div>
                 </div>
             </div>
-            <div class="downarrow"><i class="ri-arrow-down-s-line"></i></div>
-
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
     </section>
 
@@ -51,17 +90,17 @@
             <div class="container-fluid">
 
                 <div class="cards row align-items-center justify-content-satrt text-center">
-                    <div class="col-lg-4 " >
+                    <div class="col-lg-4 " data-aos="zoom-in-down" data-aos-duration="1000">
                         <div class="mx-2 card" id="card1">
-                            <div><a href="Residential_solar_services.html"><img class="p-2"
-                                        src="images/residential-solar.png" alt="residential solar"></a></div>
+                            <div class="services-img"><a href="Residential_solar_services.html"><img class="p-2"
+                                        src="images/residential-solar.jpg" alt="residential solar"></a></div>
                             <div class="card-heading">Residential Solar</div>
                             <div class="px-3">
                                 <p>Residential Solar Solutions provide clean and reliable energy for homes, reducing
                                     electricity bills and carbon Footprints.</p>
                             </div>
                             <div>
-                                <a class="d-flex justify-content-center" href="">
+                                <a class="d-flex justify-content-center" href="Residential_solar_services.html">
                                     <div class="KnowMore">Know More</div>
                                 </a>
                             </div>
@@ -69,9 +108,9 @@
                     </div>
 
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-4" data-aos="zoom-in-down" data-aos-duration="1000">
                         <div class="mx-2 card " id="card2">
-                            <div><a href="Industrial_solar_services.html"><img class="p-2"
+                            <div class="services-img"><a href="Industrial_solar_services.html"><img class="p-2 imge"
                                         src="images/industrial-solar.png" alt="industrial solar"></a>
                             </div>
                             <div class="card-heading">Industrial Solar</div>
@@ -81,7 +120,7 @@
                                     solution.</p>
                             </div>
                             <div>
-                                <a class="d-flex justify-content-center" href="">
+                                <a class="d-flex justify-content-center" href="Industrial_solar_services.html">
                                     <div class="KnowMore">Know More
                                     </div>
                                 </a>
@@ -90,17 +129,17 @@
                     </div>
 
 
-                    <div class="col-lg-4">
+                    <div class="col-lg-4" data-aos="zoom-in-down" data-aos-duration="1000">
                         <div class="mx-2 card " id="card3">
-                            <div><a href="Agricultural_solar_services.html"><img class="p-2"
-                                        src="images/Agricultural-solar.png" alt="industrial solar"></a>
+                            <div class="services-img"><a href="Commercial_solar_services.html"><img class="p-2"
+                                        src="images/commercial-solar.jpg" alt="commercial solar"></a>
                             </div>
-                            <div class="card-heading">Agricultural Solar</div>
+                            <div class="card-heading">Comercial Solar</div>
                             <div class="px-3">
-                                <p>Agricultural solar solutions help farmers reduce energy costs by providing renewable
-                                    energy for irrigation, cold storage, and other farm operations.</p>
+                                <p>Commercial solar systems provide renewable energy to businesses, reducing operational
+                                    costs and carbon footprints while ensuring sustainability and efficiency.</p>
                             </div>
-                            <div> <a class="d-flex justify-content-center" href="">
+                            <div> <a class="d-flex justify-content-center" href="Commercial_solar_services.html">
                                     <div class="KnowMore">Know More
                                     </div>
                                 </a>
@@ -122,9 +161,10 @@
                         Integrated with cutting-edge Battery Storage, build to wit the test of time stand</p>
                 </div>
                 <div class="About-div-3 m-2 row">
-                    <div class="col-lg-7"> <a href="#"><img src="images/About Us.png" alt="About Us"></a>
+                    <div class="col-lg-7" data-aos="fade-up-right" data-aos-duration="1000">
+                        <a href="#"><img src="images/About Us.png" alt="About Us"></a>
                     </div>
-                    <div class="col-lg-5 my-5">
+                    <div class="col-lg-5 my-5" data-aos="flip-right" data-aos-duration="1000">
                         <h1 class="text-align-start">What’s our
                             Resources Story?</h1>
                         <p>We supply install, test and commission a variety of
@@ -179,15 +219,15 @@
         <div class="stats">
             <div class="container">
                 <div class="stat-grid">
-                    <div class="stat-card">
+                    <div class="stat-card" data-aos="zoom-in" data-aos-duration="1000">
                         <div class="stat-number">25+</div>
                         <div class="stat-text">Years of Experience</div>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card" data-aos="zoom-in" data-aos-duration="1000">
                         <div class="stat-number">1500+</div>
                         <div class="stat-text">Satisfied Customers</div>
                     </div>
-                    <div class="stat-card">
+                    <div class="stat-card" data-aos="zoom-in" data-aos-duration="1000">
                         <div class="stat-number">8000+</div>
                         <div class="stat-text">Installations</div>
                     </div>
@@ -215,68 +255,123 @@
                                 <div class="row">
                                     <!-- Project card 1 -->
                                     <div class="col-md-6 col-lg-3 mb-4">
-                                        <div class="project-card">
-                                            <div class="location">Allahabad</div>
-                                            <div class="project-name">District Court</div>
-                                            <div class="project-title">Allahbad District court</div>
+                                        <div class="project-item" data-category="residential" data-aos="fade-up"
+                                            data-aos-duration="1000" data-aos-delay="200">
+                                            <div class="project-img">
+                                                <img src="images/complete-project-7.jpg" alt="Residential Project">
+                                            </div>
+                                            <div class="project-info">
+                                                <h3 class="project-title">Villa Solar Installation</h3>
+                                                <p class="project-details">Location: Gurugram | System Size: 8kW |
+                                                    Energy
+                                                    Output: 32kWh/day</p>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- Project card 2 -->
                                     <div class="col-md-6 col-lg-3 mb-4">
-                                        <div class="project-card">
-                                            <div class="location">Delhi</div>
-                                            <div class="project-name">JKV Hajar Building</div>
-                                            <div class="project-title">70KW</div>
+                                        <div class="project-item" data-category="residential" data-aos="fade-up"
+                                            data-aos-duration="1000" data-aos-delay="200">
+                                            <div class="project-img">
+                                                <img src="images/complete-project-5.jpg" alt="Residential Project">
+                                            </div>
+                                            <div class="project-info">
+                                                <h3 class="project-title">Villa Solar Installation</h3>
+                                                <p class="project-details">Location: Gurugram | System Size: 8kW |
+                                                    Energy
+                                                    Output: 32kWh/day</p>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- Project card 3 -->
 
                                     <div class="col-md-6 col-lg-3 mb-4">
-                                        <div class="project-card">
-                                            <div class="location">Delhi </div>
-                                            <div class="project-name">Tej Showes Shed</div>
-                                            <div class="project-title">100KW</div>
+                                        <div class="project-item" data-category="residential" data-aos="fade-up"
+                                            data-aos-duration="1000" data-aos-delay="200">
+                                            <div class="project-img">
+                                                <img src="images/complete-project-3.jpg" alt="Residential Project">
+                                            </div>
+                                            <div class="project-info">
+                                                <h3 class="project-title">Villa Solar Installation</h3>
+                                                <p class="project-details">Location: Gurugram | System Size: 8kW |
+                                                    Energy
+                                                    Output: 32kWh/day</p>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- Project card 4 -->
                                     <div class="col-md-6 col-lg-3 mb-4">
-                                        <div class="project-card">
-                                            <div class="location">Tigha </div>
-                                            <div class="project-name">Allahabad District</div>
-                                            <div class="project-title">20KW</div>
+                                        <div class="project-item" data-category="residential" data-aos="fade-up"
+                                            data-aos-duration="1000" data-aos-delay="200">
+                                            <div class="project-img">
+                                                <img src="images/complete-project-1.jpg" alt="Residential Project">
+                                            </div>
+                                            <div class="project-info">
+                                                <h3 class="project-title">Villa Solar Installation</h3>
+                                                <p class="project-details">Location: Gurugram | System Size: 8kW |
+                                                    Energy
+                                                    Output: 32kWh/day</p>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- Project card 5 -->
                                     <div class="col-md-6 col-lg-3 mb-4">
-                                        <div class="project-card">
-                                            <div class="location">Agra</div>
-                                            <div class="project-name">Ganga Ram Hospital</div>
-                                            <!-- <div class="project-name">Uttam cold store</div> -->
-                                            <div class="project-title">164 KW</div>
+                                        <div class="project-item" data-category="residential" data-aos="fade-up"
+                                            data-aos-duration="1000" data-aos-delay="200">
+                                            <div class="project-img">
+                                                <img src="images/complete-project-8.jpg" alt="Residential Project">
+                                            </div>
+                                            <div class="project-info">
+                                                <h3 class="project-title">Villa Solar Installation</h3>
+                                                <p class="project-details">Location: Gurugram | System Size: 8kW |
+                                                    Energy
+                                                    Output: 32kWh/day</p>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- Project card 6 -->
                                     <div class="col-md-6 col-lg-3 mb-4">
-                                        <div class="project-card">
-                                            <div class="location">Amritsar </div>
-                                            <div class="project-name">Sper tech Rice Mill</div>
-                                            <div class="project-title">1 MW</div>
+                                        <div class="project-item" data-category="residential" data-aos="fade-up"
+                                            data-aos-duration="1000" data-aos-delay="200">
+                                            <div class="project-img">
+                                                <img src="images/complete-project-6.jpg" alt="Residential Project">
+                                            </div>
+                                            <div class="project-info">
+                                                <h3 class="project-title">Villa Solar Installation</h3>
+                                                <p class="project-details">Location: Gurugram | System Size: 8kW |
+                                                    Energy
+                                                    Output: 32kWh/day</p>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- Project card 7 -->
                                     <div class="col-md-6 col-lg-3 mb-4">
-                                        <div class="project-card">
-                                            <div class="location">Amritsar </div>
-                                            <div class="project-name">Export rice mill</div>
-                                            <div class="project-title">400 KW</div>
+                                        <div class="project-item" data-category="residential" data-aos="fade-up"
+                                            data-aos-duration="1000" data-aos-delay="200">
+                                            <div class="project-img">
+                                                <img src="images/complete-project-2.jpg" alt="Residential Project">
+                                            </div>
+                                            <div class="project-info">
+                                                <h3 class="project-title">Villa Solar Installation</h3>
+                                                <p class="project-details">Location: Gurugram | System Size: 8kW |
+                                                    Energy
+                                                    Output: 32kWh/day</p>
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- Project card 8 -->
                                     <div class="col-md-6 col-lg-3 mb-4">
-                                        <div class="project-card">
-                                            <div class="location">Amritsar </div>
-                                            <div class="project-name">Export rice mill</div>
-                                            <div class="project-title">400 KW</div>
+                                        <div class="project-item" data-category="residential" data-aos="fade-up"
+                                            data-aos-duration="1000" data-aos-delay="200">
+                                            <div class="project-img">
+                                                <img src="images/complete-project-4.jpg" alt="Residential Project">
+                                            </div>
+                                            <div class="project-info">
+                                                <h3 class="project-title">Villa Solar Installation</h3>
+                                                <p class="project-details">Location: Gurugram | System Size: 8kW |
+                                                    Energy
+                                                    Output: 32kWh/day</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -310,8 +405,8 @@
         <div class="container">
             <h2 class="section-title">Frequently <span>Asked</span> Questions</h2>
             <div class="faq-container">
-                <div class="faq-item active">
-                    <div class="faq-question">How much does a solar system cost?</div>
+                <div class="faq-item">
+                    <div class="faq-question">How much does a solar system cost?<span class="FAQ-icon">+</span></div>
                     <div class="faq-answer">
                         <p>The cost of a solar system depends on factors such as size, quality of components,
                             installation complexity, and location. For residential systems, prices typically range from
@@ -320,7 +415,7 @@
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">How long does installation take?</div>
+                    <div class="faq-question">How long does installation take?<span class="FAQ-icon">+</span></div>
                     <div class="faq-answer">
                         <p>For residential systems, installation typically takes 1-3 days depending on system size and
                             complexity. Commercial and industrial installations may take longer, usually 1-4 weeks. Our
@@ -328,7 +423,8 @@
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">What maintenance is required for solar panels?</div>
+                    <div class="faq-question">What maintenance is required for solar panels?<span
+                            class="FAQ-icon">+</span></div>
                     <div class="faq-answer">
                         <p>Solar panels require minimal maintenance. Regular cleaning to remove dust and debris (usually
                             3-4 times a year) is recommended to maintain optimal efficiency. We offer annual maintenance
@@ -336,7 +432,7 @@
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">What warranties do you offer?</div>
+                    <div class="faq-question">What warranties do you offer?<span class="FAQ-icon">+</span></div>
                     <div class="faq-answer">
                         <p>We provide comprehensive warranties including a 25-year performance warranty on solar panels,
                             10-year product warranty on panels, 5-year warranty on inverters, and a 2-year workmanship
@@ -344,7 +440,7 @@
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">Do you provide financing options?</div>
+                    <div class="faq-question">Do you provide financing options?<span class="FAQ-icon">+</span></div>
                     <div class="faq-answer">
                         <p>Yes, we have partnerships with leading financial institutions to offer attractive financing
                             options for our solar solutions. Our team can help you explore available subsidies, tax
@@ -358,9 +454,9 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Contact <span>Us</span></h2>
+            <h2 class="heading text-center m-2 heading-colour"><span class="heading-colour">Contact Us</span></h2>
             <div class="contact-grid">
-                <div class="contact-info">
+                <div class="contact-info" data-aos="fade-left" data-aos-duration="1000">
                     <h3>Get In Touch</h3>
                     <div class="info-item">
                         <div class="info-icon">
@@ -406,7 +502,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="contact-form">
+                <div class="contact-form" data-aos="fade-right" data-aos-duration="1000">
                     <h3>Send us a Message</h3>
                     <form>
                         <div class="form-group">
@@ -443,109 +539,18 @@
     </section>
     <!-- Navbar load -->
 
+    <section>
+        <div id="FooterLoader"></div>
+    </section>
+
     <!-- Bootstrap JS (optional) -->
-
-
+    <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Check if AOS is loaded
-            if (typeof AOS !== 'undefined') {
-                console.log('AOS is loaded!');
-                AOS.init();
-            } else {
-                console.error('AOS is not loaded!');
-            }
-        });
-    </script>
-    <script>function isInViewport(element) {
-            const rect = element.getBoundingClientRect();
-            return (
-                rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-            );
-        }
-
-        function handleScroll() {
-            const elements = document.querySelectorAll('.fade-in-up');
-            elements.forEach((element) => {
-                if (isInViewport(element)) {
-                    element.classList.add('visible');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', handleScroll);
-        document.addEventListener('DOMContentLoaded', handleScroll); // Trigger on page load
-    </script>
-
-    <!-- <script src="js/main.js"></script> -->
-
-    <script>
-        function loadComponent(url, elementId) {
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', url, true);
-            xhr.onreadystatechange = function () {
-                if (this.readyState === 4 && this.status === 200) {
-                    document.getElementById(elementId).innerHTML = this.responseText;
-                } else if (this.readyState === 4) {
-                    console.error(`Error loading ${url}`);
-                }
-            };
-            xhr.send();
-        }
-        function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            const contactBtn = document.getElementById('contactBtn');
-            navLinks.classList.toggle('show');
-            contactBtn.classList.toggle('show');
-        }
 
 
-        document.addEventListener('DOMContentLoaded', function () {
-            loadComponent('navbar.html', 'NavAdder');
-            // loadComponent('footer.html', 'FooterAdder');
-        });
+    <script src="js/main.js"></script>
 
-        document.addEventListener('DOMContentLoaded', function () {
-            // Create a new XMLHttpRequest
-            const xhr = new XMLHttpRequest();
-
-            // Configure it to GET the footer.html file
-            xhr.open('GET', 'footer.html', true);
-
-            // Set up what happens on successful data submission
-            xhr.onload = function () {
-                if (this.status === 200) {
-                    // Create a container for the footer if it doesn't exist
-                    let footerContainer = document.getElementById('footer-container');
-                    if (!footerContainer) {
-                        footerContainer = document.createElement('div');
-                        footerContainer.id = 'footer-container';
-                        document.body.appendChild(footerContainer);
-                    }
-
-                    // Insert the footer HTML
-                    footerContainer.innerHTML = this.responseText;
-
-                    // Make sure the footer is the last element (after all other content)
-                    document.body.appendChild(footerContainer);
-                }
-            };
-
-            // Handle any errors
-            xhr.onerror = function () {
-                console.error('Error loading footer');
-            };
-
-            // Send the request
-            xhr.send();
-        });
-
-    </script>
 
 
 </body>

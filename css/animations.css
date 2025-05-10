@@ -106,6 +106,7 @@
     animation: pulse 2s infinite;
 }
 
+/* 
 @keyframes pulse {
     0% {
         transform: scale(1);
@@ -121,7 +122,7 @@
         transform: scale(1);
         box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
     }
-}
+} */
 
 /* Floating Animation for Icons */
 .float {
@@ -309,7 +310,7 @@
     }
 }
 
-@keyframes pulse {
+/* @keyframes pulse {
     0% {
         transform: scale(1);
     }
@@ -321,7 +322,7 @@
     100% {
         transform: scale(1);
     }
-}
+} */
 
 @keyframes bounce {
 
@@ -339,5 +340,41 @@
 
     60% {
         transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 #12402570;
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(104, 70, 15, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(249, 168, 37, 0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
     }
 }

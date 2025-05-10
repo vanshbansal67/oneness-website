@@ -1,3 +1,10 @@
+
+
+AOS.init({
+    once: true // Animation runs only once
+});
+
+
 // Navbar Loader
 function loadComponent(url, elementId) {
     var xhr = new XMLHttpRequest();
@@ -14,13 +21,13 @@ function loadComponent(url, elementId) {
 
 document.addEventListener('DOMContentLoaded', function () {
     loadComponent('navbar.html', 'NavAdder');
-    loadComponent('solar-calculator.html', 'SolarCalculatorLoader');
+    // loadComponent('solar-calculator.html', 'SolarCalculatorLoader');
     loadComponent('footer.html', 'FooterLoader');
 
 
 });
 
-// 
+// Media JS
 function toggleMenu() {
     const navLinks = document.getElementById('navLinks');
     // const contactBtn = document.getElementById('contactBtn');
@@ -29,6 +36,16 @@ function toggleMenu() {
 }
 
 
+// Add hover effects to cards
+const cards = document.querySelectorAll('.contact-card');
+cards.forEach(card => {
+    card.addEventListener('mouseenter', function () {
+        this.classList.add('shadow-lg');
+    });
+    card.addEventListener('mouseleave', function () {
+        this.classList.remove('shadow-lg');
+    });
+});
 
 // Testimonial Slider
 const testimonials = document.querySelectorAll('.testimonial-item');
@@ -63,11 +80,12 @@ setInterval(() => {
     showSlide(currentSlide + 1);
 }, 5000);
 
-
-
 // Solar Calculator Logic
-document.getElementById('calculateBtn').addEventListener('click', function () {
+CalCBtn = document.getElementById('calculateBtn');
+CalCBtn.addEventListener('click', function () {
     // Get input values
+
+
     const roofArea = parseFloat(document.getElementById('roofArea').value) || 0;
     const monthlyConsumption = parseFloat(document.getElementById('monthlyConsumption').value) || 0;
     const monthlyBill = parseFloat(document.getElementById('monthlyBill').value) || 0;
@@ -150,4 +168,50 @@ buttons.forEach(button => {
 
     // Store original HTML
     button.originalHTML = button.innerHTML;
+});
+
+
+
+// STATS COUNT ANIMATION
+
+// Function to animate counting up
+function animateValue(id, start, end, duration) {
+    const countUp = new CountUp(id, end, {
+        startVal: start,
+        duration: duration / 1000,
+        suffix: id === 'experience' ? '+' : '+',
+        useEasing: true,
+        useGrouping: true,
+    });
+
+    if (!countUp.error) {
+        countUp.start();
+    } else {
+        console.error("hello" + countUp.error);
+    }
+}
+
+// Setup Intersection Observer to trigger the animation
+document.addEventListener('DOMContentLoaded', function () {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Start animations when stats section is visible
+                animateValue('experience', 0, 25, 2000);
+                animateValue('customers', 0, 1500, 2500);
+                animateValue('installations', 0, 8000, 3000);
+
+                // Stop observing after animation is triggered
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1 // Trigger when at least 10% of the element is visible
+    });
+
+    // Start observing the stats section
+    const statsSection = document.querySelector('.stats');
+    if (statsSection) {
+        observer.observe(statsSection);
+    }
 });
