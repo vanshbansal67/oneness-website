@@ -1061,7 +1061,7 @@ textarea.form-control {
 .hero {
     height: 100vh;
     min-height: 600px;
-    background: linear-gradient(rgba(139, 211, 162, 0.475), rgba(255, 246, 246, 0.452)), url(/images/Services\ Front\ Img.png) center/cover no-repeat;
+    background: linear-gradient(rgba(139, 211, 162, 0.475), rgba(255, 246, 246, 0.452)), url(/oneness-website/images/Services\ Front\ Img.png) center/cover no-repeat;
     background-size: cover;
     background-position: center;
     display: flex;
