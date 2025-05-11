@@ -910,16 +910,16 @@ span {
 }
 
 .faq-answer p {
-    padding: 15px 0;
+    padding: 5px 0;
     color: #666;
     line-height: 1.6;
+    font-size: small;
 }
 
 .faq-item {
     margin-bottom: 15px;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
-    overflow: hidden;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 }
 
@@ -945,10 +945,11 @@ span {
 }
 
 .faq-answer {
-    padding: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.3s ease;
+    padding: 20px 25px;
+    height: 150px;
+    display: none;
+    transition: all 1.5s ease;
+    background-color: white;
 }
 
 /* Contact us form Section */

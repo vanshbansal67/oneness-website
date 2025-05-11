@@ -215,3 +215,5 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.observe(statsSection);
     }
 });
+
+
