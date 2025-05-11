@@ -22,10 +22,55 @@ function loadComponent(url, elementId) {
 document.addEventListener('DOMContentLoaded', function () {
     loadComponent('navbar.html', 'NavAdder');
     // loadComponent('solar-calculator.html', 'SolarCalculatorLoader');
-    loadComponent('footer.html', 'FooterLoader');
+    loadComponent('footer.html', 'FooterLoader', function () {
+        setupStatsObserver();  // ✅ call after footer loaded
+    });
+
+    // FaQ ka code
+    document.querySelectorAll('.faq-item').forEach(item => {
+        const question = item.querySelector('.faq-question');
+
+        question.addEventListener('click', function () {
+            const isOpen = item.classList.contains('open');
+
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.classList.remove('open');
+                faq.querySelector('.faq-answer').style.display = 'none';
+                faq.querySelector('.FAQ-icon').textContent = '+';
+            });
+
+            // If not already open, open this one
+            if (!isOpen) {
+                item.classList.add('open');
+                item.querySelector('.faq-answer').style.display = 'block';
+                item.querySelector('.FAQ-icon').textContent = '−';
+            }
+        });
+    });
+
+
+    setUpCalculator();
+
 
 
 });
+
+// Navbar Loader
+function loadComponent(url, elementId, callback = null) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.onreadystatechange = function () {
+        if (this.readyState === 4 && this.status === 200) {
+            document.getElementById(elementId).innerHTML = this.responseText;
+            if (callback) callback();  // ✅ run after load
+        } else if (this.readyState === 4) {
+            console.error(`Error loading ${url}`);
+        }
+    };
+    xhr.send();
+}
+
 
 // Media JS
 function toggleMenu() {
@@ -80,140 +125,126 @@ setInterval(() => {
     showSlide(currentSlide + 1);
 }, 5000);
 
-// Solar Calculator Logic
-CalCBtn = document.getElementById('calculateBtn');
-CalCBtn.addEventListener('click', function () {
-    // Get input values
 
 
-    const roofArea = parseFloat(document.getElementById('roofArea').value) || 0;
-    const monthlyConsumption = parseFloat(document.getElementById('monthlyConsumption').value) || 0;
-    const monthlyBill = parseFloat(document.getElementById('monthlyBill').value) || 0;
-    const connectionType = document.getElementById('connectionType').value;
+function setUpCalculator() {
+    // Solar Calculator Logic
+    CalCBtn = document.getElementById('calculateBtn');
+    CalCBtn.addEventListener('click', function () {
+        // Get input values
 
-    // Simple calculation logic (would be more complex in a real implementation)
-    let systemSize = 0;
-    let annualGeneration = 0;
-    let annualSavings = 0;
-    let carbonOffset = 0;
-    let paybackPeriod = 0;
 
-    // Calculate system size based on consumption (simplified)
-    if (monthlyConsumption > 0) {
-        // Assume 1 kW system produces about 120 kWh per month in India
-        systemSize = (monthlyConsumption / 120).toFixed(2) + ' kW';
+        const roofArea = parseFloat(document.getElementById('roofArea').value) || 0;
+        const monthlyConsumption = parseFloat(document.getElementById('monthlyConsumption').value) || 0;
+        const monthlyBill = parseFloat(document.getElementById('monthlyBill').value) || 0;
+        const connectionType = document.getElementById('connectionType').value;
 
-        // Calculate annual generation
-        const systemSizeVal = parseFloat(systemSize);
-        annualGeneration = (systemSizeVal * 120 * 12).toFixed(0) + ' kWh';
+        // Simple calculation logic (would be more complex in a real implementation)
+        let systemSize = 0;
+        let annualGeneration = 0;
+        let annualSavings = 0;
+        let carbonOffset = 0;
+        let paybackPeriod = 0;
 
-        // Calculate annual savings
-        annualSavings = '₹' + (monthlyBill * 12).toFixed(0);
+        // Calculate system size based on consumption (simplified)
+        if (monthlyConsumption > 0) {
+            // Assume 1 kW system produces about 120 kWh per month in India
+            systemSize = (monthlyConsumption / 120).toFixed(2) + ' kW';
 
-        // Calculate carbon offset (average CO2 emission per kWh in India is about 0.82 kg)
-        carbonOffset = ((systemSizeVal * 120 * 12 * 0.82) / 1000).toFixed(2) + ' tons of CO2';
+            // Calculate annual generation
+            const systemSizeVal = parseFloat(systemSize);
+            annualGeneration = (systemSizeVal * 120 * 12).toFixed(0) + ' kWh';
 
-        // Calculate payback period (assuming ₹60,000 per kW installation cost)
-        paybackPeriod = ((systemSizeVal * 60000) / (monthlyBill * 12)).toFixed(1) + ' years';
-    } else if (roofArea > 0) {
-        // Alternatively calculate based on roof area (simplified)
-        // Assume 10 sqft per 100W of solar panels
-        systemSize = (roofArea / 100).toFixed(2) + ' kW';
+            // Calculate annual savings
+            annualSavings = '₹' + (monthlyBill * 12).toFixed(0);
 
-        // Use the system size to calculate other metrics
-        const systemSizeVal = parseFloat(systemSize);
-        annualGeneration = (systemSizeVal * 120 * 12).toFixed(0) + ' kWh';
-        annualSavings = '₹' + (systemSizeVal * 120 * 12 * (monthlyBill / monthlyConsumption || 8)).toFixed(0);
-        carbonOffset = ((systemSizeVal * 120 * 12 * 0.82) / 1000).toFixed(2) + ' tons of CO2';
-        paybackPeriod = ((systemSizeVal * 60000) / (systemSizeVal * 120 * 12 * (monthlyBill / monthlyConsumption || 8))).toFixed(1) + ' years';
+            // Calculate carbon offset (average CO2 emission per kWh in India is about 0.82 kg)
+            carbonOffset = ((systemSizeVal * 120 * 12 * 0.82) / 1000).toFixed(2) + ' tons of CO2';
+
+            // Calculate payback period (assuming ₹60,000 per kW installation cost)
+            paybackPeriod = ((systemSizeVal * 60000) / (monthlyBill * 12)).toFixed(1) + ' years';
+        } else if (roofArea > 0) {
+            // Alternatively calculate based on roof area (simplified)
+            // Assume 10 sqft per 100W of solar panels
+            systemSize = (roofArea / 100).toFixed(2) + ' kW';
+
+            // Use the system size to calculate other metrics
+            const systemSizeVal = parseFloat(systemSize);
+            annualGeneration = (systemSizeVal * 120 * 12).toFixed(0) + ' kWh';
+            annualSavings = '₹' + (systemSizeVal * 120 * 12 * (monthlyBill / monthlyConsumption || 8)).toFixed(0);
+            carbonOffset = ((systemSizeVal * 120 * 12 * 0.82) / 1000).toFixed(2) + ' tons of CO2';
+            paybackPeriod = ((systemSizeVal * 60000) / (systemSizeVal * 120 * 12 * (monthlyBill / monthlyConsumption || 8))).toFixed(1) + ' years';
+        }
+
+        // Update result fields
+        document.getElementById('systemSize').textContent = systemSize;
+        document.getElementById('annualGeneration').textContent = annualGeneration;
+        document.getElementById('annualSavings').textContent = annualSavings;
+        document.getElementById('carbonOffset').textContent = carbonOffset;
+        document.getElementById('paybackPeriod').textContent = paybackPeriod;
+
+        // Show results
+        document.getElementById('calculatorResult').style.display = 'block';
+
+        // Animate the result section
+        document.getElementById('calculatorResult').classList.add('animate__animated', 'animate__fadeIn');
+    });
+
+    // Add loading animation to buttons
+    const buttons = document.querySelectorAll('.btn-submit, .btn-calculate');
+    buttons.forEach(button => {
+        button.addEventListener('click', function () {
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            setTimeout(() => {
+                this.innerHTML = this.innerHTML.replace('<i class="fas fa-spinner fa-spin"></i> Processing...', this.originalHTML);
+            }, 2000);
+        });
+
+        // Store original HTML
+        button.originalHTML = button.innerHTML;
+    });
+}
+
+
+function setupStatsObserver() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                console.log("Stats section in view - starting animations");
+
+                const experience = document.getElementById('experience');
+                const customers = document.getElementById('customers');
+                const installations = document.getElementById('installations');
+
+                if (experience) countUp(experience, 0, 7, 2000, '+');
+                if (customers) countUp(customers, 0, 1500, 2500, '+');
+                if (installations) countUp(installations, 0, 8000, 3000, '+');
+
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    const statsSection = document.querySelector('.stats');
+    if (statsSection) {
+        console.log("Stats section found - setting up observer");
+        observer.observe(statsSection);
+    } else {
+        console.error("Stats section not found in DOM");
     }
+}
 
-    // Update result fields
-    document.getElementById('systemSize').textContent = systemSize;
-    document.getElementById('annualGeneration').textContent = annualGeneration;
-    document.getElementById('annualSavings').textContent = annualSavings;
-    document.getElementById('carbonOffset').textContent = carbonOffset;
-    document.getElementById('paybackPeriod').textContent = paybackPeriod;
+function countUp(element, start, end, duration, suffix = '') {
+    let startTime = null;
+    const step = timestamp => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const value = Math.floor(progress * (end - start) + start);
+        element.textContent = value + suffix;
 
-    // Show results
-    document.getElementById('calculatorResult').style.display = 'block';
-
-    // Animate the result section
-    document.getElementById('calculatorResult').classList.add('animate__animated', 'animate__fadeIn');
-});
-
-// Number Animation for statistics
-function animateValue(obj, start, end, duration) {
-    let startTimestamp = null;
-    const step = (timestamp) => {
-        if (!startTimestamp) startTimestamp = timestamp;
-        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        obj.innerHTML = Math.floor(progress * (end - start) + start);
         if (progress < 1) {
             window.requestAnimationFrame(step);
         }
     };
     window.requestAnimationFrame(step);
 }
-
-// Add loading animation to buttons
-const buttons = document.querySelectorAll('.btn-submit, .btn-calculate');
-buttons.forEach(button => {
-    button.addEventListener('click', function () {
-        this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-        setTimeout(() => {
-            this.innerHTML = this.innerHTML.replace('<i class="fas fa-spinner fa-spin"></i> Processing...', this.originalHTML);
-        }, 2000);
-    });
-
-    // Store original HTML
-    button.originalHTML = button.innerHTML;
-});
-
-
-
-// STATS COUNT ANIMATION
-
-// Function to animate counting up
-function animateValue(id, start, end, duration) {
-    const countUp = new CountUp(id, end, {
-        startVal: start,
-        duration: duration / 1000,
-        suffix: id === 'experience' ? '+' : '+',
-        useEasing: true,
-        useGrouping: true,
-    });
-
-    if (!countUp.error) {
-        countUp.start();
-    } else {
-        console.error("hello" + countUp.error);
-    }
-}
-
-// Setup Intersection Observer to trigger the animation
-document.addEventListener('DOMContentLoaded', function () {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Start animations when stats section is visible
-                animateValue('experience', 0, 25, 2000);
-                animateValue('customers', 0, 1500, 2500);
-                animateValue('installations', 0, 8000, 3000);
-
-                // Stop observing after animation is triggered
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1 // Trigger when at least 10% of the element is visible
-    });
-
-    // Start observing the stats section
-    const statsSection = document.querySelector('.stats');
-    if (statsSection) {
-        observer.observe(statsSection);
-    }
-});
-
-
