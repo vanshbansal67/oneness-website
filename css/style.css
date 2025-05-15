@@ -2186,3 +2186,41 @@ video {
     color: #ffc107;
     margin-bottom: 20px;
 }
+
+
+
+.popup {
+    height: 50px;
+    width: 125px;
+    background-color: #a5613e;
+    top: 50%;
+    left: -90px;
+    /* Default position: slightly outside the view */
+    transform: translateY(-50%);
+    z-index: 20;
+    position: fixed;
+    transition: left 0.5s ease;
+}
+
+.popup:hover {
+    left: 0;
+}
+
+.popup a h1 {
+    font-size: 16px;
+
+}
+
+.popup a i {
+    font-size: 30px;
+}
+
+.popup a {
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
