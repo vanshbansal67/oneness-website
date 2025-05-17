@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', function () {
     setUpCalculator();
 
 
-
 });
 
 // Navbar Loader
@@ -248,3 +247,6 @@ function countUp(element, start, end, duration, suffix = '') {
     };
     window.requestAnimationFrame(step);
 }
+
+
+
