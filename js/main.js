@@ -72,11 +72,19 @@ function loadComponent(url, elementId, callback = null) {
 
 
 // Media JS
+// function toggleMenu() {
+//     const navLinks = document.getElementById('navLinks');
+//     // const contactBtn = document.getElementById('contactBtn');
+//     navLinks.classList.toggle('show');
+//     // contactBtn.classList.toggle('show');
+// }
+// function toggleMenu() {
+//     const navLinks = document.getElementById('navLinks');
+//     navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+// }
 function toggleMenu() {
-    const navLinks = document.getElementById('navLinks');
-    // const contactBtn = document.getElementById('contactBtn');
-    navLinks.classList.toggle('show');
-    // contactBtn.classList.toggle('show');
+    const navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('active');
 }
 
 
