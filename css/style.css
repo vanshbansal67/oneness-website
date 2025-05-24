@@ -65,10 +65,8 @@ html {
 }
 
 body {
-    /* background-color: var(--light-green); */
     font-family: 'Poppins', sans-serif;
     background-color: #F3F6E5;
-    /* scrollbar-gutter: stable; */
 }
 
 
@@ -326,6 +324,7 @@ a {
     z-index: 10;
     width: 100%;
     height: 80px;
+    top: 0;
 }
 
 .logo-container {
@@ -371,7 +370,7 @@ a {
     flex-direction: column;
     /* Vertical layout for mobile */
     align-items: end;
-    background-color: var(--light-green);
+    /* background-color: var(--light-green); */
     position: absolute;
     top: 80px;
     /* Adjust according to navbar height */
@@ -481,9 +480,9 @@ a {
 
 
 /* Footer Css */
+
 /* footer-styles.css */
 footer {
-    /* margin-top: 20px; */
     background-color: #121212;
     color: #fff;
     padding: 80px 0 20px;
@@ -560,6 +559,11 @@ footer {
     font-weight: bold;
 }
 
+.logo-container .logo-text {
+    display: flex;
+    width: auto;
+    flex-direction: column;
+}
 
 /* Solar calculator CSS */
 
@@ -1209,7 +1213,7 @@ textarea.form-control {
     display: flex;
     align-items: center;
     position: relative;
-    margin-top: 80px;
+    /* margin-top: 80px; */
 }
 
 .hero:after {
@@ -1275,13 +1279,6 @@ textarea.form-control {
     background-color: #e9f4e9;
 }
 
-
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
 .project-item {
     overflow: hidden;
     border-radius: 8px;
@@ -1301,6 +1298,7 @@ textarea.form-control {
     object-fit: cover;
     transition: transform 0.5s ease;
 }
+
 
 .project-item:hover .project-img img {
     transform: scale(1.1);
@@ -1325,6 +1323,7 @@ textarea.form-control {
 .project-title {
     font-size: 1.2rem;
     margin-bottom: 3px;
+    color: rgba(11, 2, 2, 0.758);
 }
 
 .project-details {
@@ -1357,11 +1356,6 @@ textarea.form-control {
     background-color: #e9f4e9;
 }
 
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-}
 
 .service-card {
     background-color: white;
@@ -1369,11 +1363,19 @@ textarea.form-control {
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* gap: 30px; */
 }
 
 .service-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width:991px) {
+    .service-card {
+        border: 7px solid black;
+        margin-bottom: 20px;
+    }
 }
 
 .service-img {
@@ -1409,7 +1411,7 @@ textarea.form-control {
 
 
 
-/* Installation Process Section */
+/* Installation Process Section
 .process-tabs {
     display: flex;
     justify-content: center;
@@ -1444,6 +1446,93 @@ textarea.form-control {
 
 .process-content.active {
     display: block;
+} */
+
+/* Installation Process Styles */
+.process {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.section-title span {
+    color: #28a745;
+}
+
+.timeline {
+    position: relative;
+}
+
+.timeline-item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.timeline-item.left,
+.timeline-item.right {
+    text-align: center;
+}
+
+.timeline-content {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-content h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.timeline-content p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .timeline-item {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .timeline-content {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 576px) {
+    .section-title {
+        font-size: 24px;
+    }
+
+    .timeline-content {
+        padding: 15px;
+    }
+
+    .timeline-item {
+        /* display: none; */
+    }
+
+    .timeline-content h3 {
+        font-size: 18px;
+    }
+
+    .timeline-content p {
+        font-size: 13px;
+    }
+
 }
 
 /* Why Choose Us Section */
@@ -1456,9 +1545,9 @@ textarea.form-control {
 }
 
 .features-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    /* display: grid; */
+    /* grid-template-columns: repeat(3, 1fr); */
+    /* gap: 30px; */
 }
 
 .feature-box {
@@ -1493,13 +1582,21 @@ textarea.form-control {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 10px;
+}
+
+@media (max-width:576px) {
+    .feature-box {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.256);
+    }
+
 }
 
 /* Testimonials Section */
 .testimonials {
     background-color: white;
     padding: 15px;
+
 }
 
 .testimonial-slider {
@@ -1589,7 +1686,7 @@ textarea.form-control {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(/images/Contact\ Us.png);
+    background-image: url(/oneness-website/images/Contact\ Us.png);
     background-size: cover;
     background-position: center;
     z-index: -1;
@@ -1597,7 +1694,7 @@ textarea.form-control {
 }
 
 .Contact-Us-Page-1 {
-    margin-top: 81px;
+    margin-top: 80px;
     position: relative;
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), no-repeat center center;
     background-size: cover;
@@ -1622,7 +1719,7 @@ textarea.form-control {
 /* Contact info section */
 
 .contact-info-section {
-    padding: 60px 0;
+    padding: 30px 0;
     background: white;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     border-radius: 15px;
@@ -1698,7 +1795,7 @@ textarea.form-control {
 
 /* Connect Us Form */
 .form-section {
-    padding: 80px 0;
+    padding: 10px 0;
     background: #f9f9f9;
 }
 
@@ -1706,7 +1803,7 @@ textarea.form-control {
     background: white;
     padding: 40px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); */
 }
 
 .section-title {
@@ -1873,8 +1970,8 @@ video {
 .about-img {
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.244);
+    margin-bottom: 10px;
 }
 
 .section-title {
@@ -2009,6 +2106,38 @@ video {
     font-weight: 600;
 }
 
+@media (max-width:576px) {
+    .timeline::after {
+        display: none;
+    }
+
+    .timeline-item::after {
+        display: none;
+    }
+
+    .timeline-item {
+        width: 100%;
+        position: static;
+    }
+
+    .right,
+    .left {
+        left: 0;
+        width: 100%;
+    }
+
+    .left::after {
+        /* right: 0; */
+        left: 0;
+    }
+
+    .right::after {
+        /* left: 0; */
+        right: 0;
+
+    }
+}
+
 .left {
     left: 0;
 }
@@ -2053,7 +2182,7 @@ video {
 .project-experience h2 {
     color: #166534;
     font-weight: 700;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .experience-img {
@@ -2064,6 +2193,13 @@ video {
     object-fit: cover;
 }
 
+@media (max-width:576px) {
+    .project-experience {
+        /* min-height: 95vh; */
+        text-align: center;
+    }
+}
+
 /* Project Cards */
 .projects-section {
     padding: 20px 0;
@@ -2071,7 +2207,7 @@ video {
 
 .projects-section h2 {
     font-weight: 700;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .project-color {
@@ -2083,7 +2219,7 @@ video {
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     height: 100%;
     background-color: white;
 }
@@ -2151,9 +2287,9 @@ video {
 .featured-card {
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.42);
     transition: transform 0.3s;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     height: 100%;
     background-color: white;
 }
@@ -2198,6 +2334,12 @@ video {
     color: #6b7280;
 }
 
+@media(max-width:576px) {
+    .featured-title {
+        text-align: center;
+    }
+
+}
 
 /* Commmercial Solar CSS */
 /* Hero Section */
