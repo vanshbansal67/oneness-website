@@ -257,9 +257,16 @@ img {
         margin-bottom: 10px;
     }
 
-    .about-hero p,
-    .about-hero h1 {
+    .about-hero p {
         display: none;
+    }
+
+
+
+    .about-hero h1 {
+        font-family: 0.5rem;
+        /* text-align: center; */
+
     }
 }
 
