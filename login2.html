@@ -22,18 +22,18 @@
             <span class="rotate-bg"></span>
             <span class="rotate-bg2"></span>
 
-            <div class="form-box login">
+            <div class="form-box login" id="loginForm">
                 <h2 class="title animation" style="--i:0; --j:21">Login</h2>
                 <form action="#">
 
                     <div class="input-box animation" style="--i:1; --j:22">
-                        <input type="text" required>
+                        <input type="text" id="loginUsername" required>
                         <label for="">Username</label>
                         <i class='bx bxs-user'></i>
                     </div>
 
                     <div class="input-box animation" style="--i:2; --j:23">
-                        <input type="password" required>
+                        <input type="password" id="loginPassword" required>
                         <label for="">Password</label>
                         <i class='bx bxs-lock-alt'></i>
                     </div>
@@ -56,14 +56,14 @@
 
 
 
-            <div class="form-box register">
+            <div class="form-box register" id="signupForm">
 
                 <h2 class="title animation" style="--i:17; --j:0">Sign Up</h2>
 
                 <form action="#">
 
                     <div class="input-box animation" style="--i:18; --j:1">
-                        <input type="text" required>
+                        <input type="text" id="signupUsername" required>
                         <label for="">Username</label>
                         <i class='bx bxs-user'></i>
                     </div>
@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="input-box animation" style="--i:20; --j:3">
-                        <input type="password" required>
+                        <input type="password" id="signupPassword" required>
                         <label for="">Password</label>
                         <i class='bx bxs-lock-alt'></i>
                     </div>
@@ -95,6 +95,9 @@
             </div>
         </div>
     </div>
+
+    <div id="output"></div>
+
     <script>
         const wrapper = document.querySelector('.wrapper')
         const registerLink = document.querySelector('.register-link')
@@ -107,6 +110,54 @@
         loginLink.onclick = () => {
             wrapper.classList.remove('active')
         }
+
+        const BASE_URL = "https://solar-power-698w.onrender.com/swagger-ui/index.html#/"; // Backend base URL
+
+        // Signup Form Submission
+        document.getElementById("signupForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const username = document.getElementById("signupUsername").value;
+            const password = document.getElementById("signupPassword").value;
+
+            fetch(`${BASE_URL}/api/v1/users/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ username, password })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("output").innerText = `Signup Successful: ${JSON.stringify(data)}`;
+                })
+                .catch(error => {
+                    document.getElementById("output").innerText = `Signup Error: ${error.message}`;
+                });
+        });
+
+        // Login Form Submission
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const username = document.getElementById("loginUsername").value;
+            const password = document.getElementById("loginPassword").value;
+
+            fetch(`${BASE_URL}/api/v1/users/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ username, password })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("output").innerText = `Login Successful: ${JSON.stringify(data)}`;
+                })
+                .catch(error => {
+                    document.getElementById("output").innerText = `Login Error: ${error.message}`;
+                });
+        });
     </script>
 
 </body>
