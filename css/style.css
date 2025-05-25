@@ -699,6 +699,7 @@ footer {
 
 /* Page1 Css */
 .Home {
+    /* margin-top: 20vh; */
     height: 100%;
     width: 100%;
     position: relative;
@@ -712,8 +713,25 @@ footer {
     object-fit: cover;
     height: 100%;
     width: 100%;
+    opacity: 0.8;
 }
 
+.carousel-caption {
+    color: #590b0b;
+}
+
+.carousel-caption h5 {
+    font-size: 3rem;
+}
+
+.carousel-caption p {
+    margin: auto;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 700px; */
+}
 
 .text-overlay {
     position: absolute;
@@ -999,6 +1017,13 @@ span {
     font-size: 14px;
     text-transform: uppercase;
     margin-bottom: 5px;
+}
+
+.project-title-main {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 3px;
+    /* text-align: center; */
 }
 
 .project-name {

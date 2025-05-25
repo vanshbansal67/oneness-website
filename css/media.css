@@ -137,7 +137,7 @@ img {
 
 @media (max-width: 992px) {
     .carousel-item img {
-        height: 70vh;
+        height: 90vh;
         /* Adjusted for tablet size */
     }
 }
@@ -611,5 +611,14 @@ img {
 
     .submit-btn:hover {
         background-color: #1f551c;
+    }
+
+    .nav-link {
+        text-align: center;
+        width: 100px;
+    }
+
+    .nav-links {
+        background-color: rgba(250, 235, 215, 0.566);
     }
 }
