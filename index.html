@@ -504,22 +504,22 @@
                 </div>
                 <div class="contact-form" data-aos="fade-up" data-aos-duration="1000">
                     <h3>Send us a Message</h3>
-                    <form>
+                    <form id="feedbackForm">
                         <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" class="form-control" placeholder="Your Name">
+                            <label for="name" class="form-title">Full Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" id="email" class="form-control" placeholder="Your Email">
+                            <input type="email" id="email" class="form-control" placeholder="Your Email" required>
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone</label>
-                            <input type="tel" id="phone" class="form-control" placeholder="Your Phone Number">
+                            <input type="tel" id="phone" class="form-control" placeholder="Your Phone Number" required>
                         </div>
                         <div class="form-group">
                             <label for="service">Service Interested In</label>
-                            <select id="service" class="form-control">
+                            <select id="service" class="form-control" required>
                                 <option value="">Select a Service</option>
                                 <option value="residential">Residential Solar</option>
                                 <option value="commercial">Commercial Solar</option>
@@ -533,6 +533,10 @@
                         </div>
                         <button type="submit" id="sendMessageBtn" class="submit-btn">Send Message</button>
                     </form>
+                    <div id="loginModal" style="display: none;">
+                        <h2>Login Required</h2>
+                        <button id="loginRedirectBtn">Go to Login</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -549,6 +553,52 @@
 
 
     <script src="js/main.js"></script>
+
+    <script>
+        document.getElementById("feedbackForm").addEventListener("submit", async (event) => {
+            event.preventDefault(); // Prevent default form submission
+
+            // Collect form data
+            const feedbackData = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("phone").value,
+                service: document.getElementById("service").value,
+                message: document.getElementById("message").value
+            };
+
+            try {
+                // Send form data to the backend
+                const response = await fetch("/api/feedback", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${localStorage.getItem("token")}` // Assuming token stored here
+                    },
+                    body: JSON.stringify(feedbackData)
+                });
+
+                if (response.status === 401) {
+                    // User is not logged in
+                    document.getElementById("loginModal").style.display = "block";
+                } else if (response.ok) {
+                    alert("Thank you! Your feedback has been submitted.");
+                    document.getElementById("feedbackForm").reset(); // Clear form after submission
+                } else {
+                    const error = await response.json();
+                    alert("Error: " + error.message);
+                }
+            } catch (err) {
+                console.error("Error submitting feedback:", err);
+                alert("An error occurred while submitting your feedback. Please try again.");
+            }
+        });
+
+        // Redirect to login page when login modal button is clicked
+        document.getElementById("loginRedirectBtn").addEventListener("click", () => {
+            window.location.href = "/oneness-website/login2.html"; // Redirect to your login page
+        });
+    </script>
 
 </body>
 

@@ -90,8 +90,7 @@
                         <div class="contact-us-info">
                             <p><strong>Phone:</strong><br>
                                 +91-9205372977 <br>
-                                +91-9206306000<br>
-                                +91-7988621729</p>
+                            </p>
                             <p><strong>Email:</strong><br>
                                 info.onenesssolarpower@gmail.com</p>
                         </div>
@@ -121,9 +120,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="lastName" class="form-label">Last Name*</label>
+                                        <label for="lastName" class="form-label">Last Name</label>
                                         <input type="text" class="form-control" id="lastName"
-                                            placeholder="Your last name" required>
+                                            placeholder="Your last name">
                                     </div>
                                 </div>
                             </div>
@@ -343,7 +342,59 @@
         crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
 
-    <script></script>
+    <script>
+        const API_BASE_URL = "https://solar-power-698w.onrender.com";
+
+        document.getElementById("contactForm").addEventListener("submit", async (event) => {
+            event.preventDefault(); // Prevent default form submission
+
+            if (!token) {
+                alert("You need to log in before submitting the form.");
+                window.location.href = "/login"; // Redirect to login page
+                return;
+            } f
+            // Collect form data
+            const formData = {
+                firstName: document.getElementById("firstName").value,
+                lastName: document.getElementById("lastName").value,
+                mobileNumber: document.getElementById("mobileNumber").value,
+                email: document.getElementById("email").value,
+                country: document.getElementById("country").value,
+                city: document.getElementById("city").value,
+                ConnectionType: document.getElementById("ConnectionType").value,
+                comment: document.getElementById("comment").value,
+                interested: document.querySelector("input[name='interested']:checked").value
+            };
+
+            try {
+                // Send data to backend
+                const response = await fetch(`${API_BASE_URL}/api/v1/queries/sendQuery`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${localStorage.getItem("token")}` // Assuming token is stored here
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.status === 401) {
+                    // User is not logged in
+                    alert("You must be logged in to submit a query. Redirecting to login...");
+                    window.location.href = "/oneness-website/login2.html"; // Redirect to login page
+                } else if (response.ok) {
+                    alert("Your query has been submitted successfully!");
+                    document.getElementById("contactForm").reset(); // Reset form
+                } else {
+                    const error = await response.json();
+                    alert("Error: " + error.message);
+                }
+            } catch (err) {
+                console.error("Error submitting query:", err);
+                alert("An error occurred while submitting your query. Please try again.");
+            }
+        });
+
+    </script>
 </body>
 
 </html>
