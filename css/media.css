@@ -256,6 +256,11 @@ img {
         color: #ff9800;
         margin-bottom: 10px;
     }
+
+    .about-hero p,
+    .about-hero h1 {
+        display: none;
+    }
 }
 
 /* stats section media query for mobile screen */

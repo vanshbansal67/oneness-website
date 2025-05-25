@@ -1277,6 +1277,9 @@ textarea.form-control {
     animation-fill-mode: both;
 }
 
+.Services-image {
+    background-image: url(/oneness-website/images/residential-solar.jpg);
+}
 
 .btn {
     display: inline-block;
