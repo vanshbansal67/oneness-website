@@ -156,10 +156,26 @@
                                         <label for="email" class="form-label">Email*</label>
                                         <input type="email" class="form-control" id="email"
                                             placeholder="Your email address" required>
+
+                                        <button type="button" id="sendOtpBtn" class="btn btn-primary mt-2">Send
+                                            OTP</button>
+                                    </div>
+
+                                    <div class="mb-3" id="otpSection" style="display: none;">
+                                        <label for="otpInput" class="form-label">Enter OTP*</label>
+                                        <input type="text" class="form-control" id="otpInput" placeholder="Enter OTP">
+                                        <button type="button" id="verifyOtpBtn" class="btn btn-success mt-2">Verify
+                                            OTP</button>
+                                    </div>
+
+                                    <!-- Disable the rest of the form fields initially -->
+                                    <div id="formFields" style="display: none;">
+                                        <!-- Add the rest of your form fields here -->
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
+
                                         <label for="country" class="form-label">Country*</label>
                                         <input type="text" class="form-control" id="country" placeholder="Your country"
                                             required>
@@ -331,6 +347,14 @@
         </section>
     </section>
 
+    <!-- <div id="otpModal" class="modal">
+        <div class="modal-content">
+            <h4>Verify OTP</h4>
+            <p>Please enter the OTP sent to your email and mobile number.</p>
+            <input type="text" id="otpInput" placeholder="Enter OTP" />
+            <button id="verifyOtpBtn">Verify OTP</button>
+        </div>
+    </div> -->
     <!-- Footer Loader -->
     <div id="FooterLoader"></div>
 
@@ -344,16 +368,74 @@
 
     <script>
         const API_BASE_URL = "https://solar-power-698w.onrender.com";
+        let isOtpVerified = false; // Flag to track OTP verification
 
+        document.getElementById("sendOtpBtn").addEventListener("click", async () => {
+            const email = document.getElementById("email").value;
+
+            if (!email) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            try {
+                // Send OTP to the email
+                const otpResponse = await fetch(`${API_BASE_URL}/api/v1/queries/sendOtp/{email}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ email })
+                });
+
+                if (otpResponse.ok) {
+                    alert("OTP sent to your email. Please check your inbox.");
+                    document.getElementById("otpSection").style.display = "block"; // Show OTP input section
+                } else {
+                    alert("Failed to send OTP. Please try again.");
+                }
+            } catch (err) {
+                console.error("Error sending OTP:", err);
+                alert("An error occurred while sending OTP. Please try again.");
+            }
+        });
+
+        document.getElementById("verifyOtpBtn").addEventListener("click", async () => {
+            const otp = document.getElementById("otpInput").value;
+
+            if (!otp) {
+                alert("Please enter the OTP.");
+                return;
+            }
+
+            try {
+                // Verify the OTP
+                const verifyResponse = await fetch(`${API_BASE_URL}/api/v1/users/verifyVerificationOtp/{email}/{otp}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ otp })
+                });
+
+                if (verifyResponse.ok) {
+                    alert("Email verified successfully!");
+                    document.getElementById("formFields").style.display = "block"; // Enable the rest of the form
+                } else {
+                    alert("Invalid OTP. Please try again.");
+                }
+            } catch (err) {
+                console.error("Error verifying OTP:", err);
+                alert("An error occurred while verifying OTP. Please try again.");
+            }
+        });
         document.getElementById("contactForm").addEventListener("submit", async (event) => {
             event.preventDefault(); // Prevent default form submission
 
-            if (!token) {
-                alert("You need to log in before submitting the form.");
-                window.location.href = "/login"; // Redirect to login page
+            if (!isOtpVerified) {
+                alert("Please verify your email before submitting the form.");
                 return;
-            } f
-            // Collect form data
+            }
             const formData = {
                 firstName: document.getElementById("firstName").value,
                 lastName: document.getElementById("lastName").value,
@@ -367,26 +449,20 @@
             };
 
             try {
-                // Send data to backend
+                // Submit the form data to the backend
                 const response = await fetch(`${API_BASE_URL}/api/v1/queries/sendQuery`, {
                     method: "POST",
                     headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${localStorage.getItem("token")}` // Assuming token is stored here
+                        "Content-Type": "application/json"
                     },
                     body: JSON.stringify(formData)
                 });
 
-                if (response.status === 401) {
-                    // User is not logged in
-                    alert("You must be logged in to submit a query. Redirecting to login...");
-                    window.location.href = "/oneness-website/login2.html"; // Redirect to login page
-                } else if (response.ok) {
+                if (response.ok) {
                     alert("Your query has been submitted successfully!");
-                    document.getElementById("contactForm").reset(); // Reset form
+                    document.getElementById("contactForm").reset();
                 } else {
-                    const error = await response.json();
-                    alert("Error: " + error.message);
+                    alert("Failed to submit your query. Please try again.");
                 }
             } catch (err) {
                 console.error("Error submitting query:", err);
