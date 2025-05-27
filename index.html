@@ -512,6 +512,14 @@
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" id="email" class="form-control" placeholder="Your Email" required>
+                            <button type="button" id="sendOtpBtn" class="btn btn-primary mt-2">Send
+                                OTP</button>
+                        </div>
+                        <div class="mb-3" id="otpSection" style="display: none;">
+                            <label for="otpInput" class="form-label">Enter OTP*</label>
+                            <input type="text" class="form-control" id="otpInput" placeholder="Enter OTP">
+                            <button type="button" id="verifyOtpBtn" class="btn btn-success mt-2">Verify
+                                OTP</button>
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone</label>
@@ -554,9 +562,77 @@
 
 
     <script>
+        const API_BASE_URL = "https://solar-power-698w.onrender.com";
+
+        let isOtpVerified = false; // Flag to track OTP verification
+
+
+        // Check if OTP is verified
+        document.getElementById("sendOtpBtn").addEventListener("click", async () => {
+            const email = document.getElementById("email").value;
+
+            if (!email) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            try {
+                // Send OTP to the email
+                const otpResponse = await fetch(`${API_BASE_URL}/api/v1/queries/sendOtp/{email}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ email })
+                });
+
+                if (otpResponse.ok) {
+                    alert("OTP sent to your email. Please check your inbox.");
+                    document.getElementById("otpSection").style.display = "block"; // Show OTP input section
+                } else {
+                    alert("Failed to send OTP. Please try again.");
+                }
+            } catch (err) {
+                console.error("Error sending OTP:", err);
+                alert("An error occurred while sending OTP. Please try again.");
+            }
+        });
+        document.getElementById("verifyOtpBtn").addEventListener("click", async () => {
+            const otp = document.getElementById("otpInput").value;
+
+            if (!otp) {
+                alert("Please enter the OTP.");
+                return;
+            }
+
+            try {
+                // Verify the OTP
+                const verifyResponse = await fetch(`${API_BASE_URL}/api/v1/users/verifyVerificationOtp/{email}/{otp}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ otp })
+                });
+
+                if (verifyResponse.ok) {
+                    alert("Email verified successfully!");
+                    document.getElementById("formFields").style.display = "block"; // Enable the rest of the form
+                } else {
+                    alert("Invalid OTP. Please try again.");
+                }
+            } catch (err) {
+                console.error("Error verifying OTP:", err);
+                alert("An error occurred while verifying OTP. Please try again.");
+            }
+        });
+
         document.getElementById("feedbackForm").addEventListener("submit", async (event) => {
             event.preventDefault(); // Prevent default form submission
-
+            if (!isOtpVerified) {
+                alert("Please verify your email before submitting the form.");
+                return;
+            }
             // Collect form data
             const feedbackData = {
                 name: document.getElementById("name").value,

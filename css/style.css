@@ -1281,7 +1281,7 @@ textarea.form-control {
 }
 
 .Services-image {
-    background-image: url(/oneness-website/images/residential-solar.jpg);
+    background-image: url(/oneness-website/images/residential-solar.png);
 }
 
 .btn {
@@ -1718,7 +1718,7 @@ textarea.form-control {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url(/oneness-website/images/Contact\ Us.png);
+    background-image: url(../images/Contact\ Us.png);
     background-size: cover;
     background-position: center;
     z-index: -1;
@@ -2055,6 +2055,11 @@ video {
     border-radius: 10px;
     padding: 40px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.feedback-form h4 {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .form-control {
