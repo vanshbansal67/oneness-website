@@ -644,11 +644,10 @@
 
             try {
                 // Send form data to the backend
-                const response = await fetch("/api/feedback", {
+                const response = await fetch("/api/feedbacks", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": `Bearer ${localStorage.getItem("token")}` // Assuming token stored here
                     },
                     body: JSON.stringify(feedbackData)
                 });
@@ -657,21 +656,21 @@
                     // User is not logged in
                     document.getElementById("loginModal").style.display = "block";
                 } else if (response.ok) {
-                    alert("Thank you! Your feedback has been submitted.");
+                    alert("Thank you! Your query has been submitted.");
                     document.getElementById("feedbackForm").reset(); // Clear form after submission
                 } else {
                     const error = await response.json();
                     alert("Error: " + error.message);
                 }
             } catch (err) {
-                console.error("Error submitting feedback:", err);
-                alert("An error occurred while submitting your feedback. Please try again.");
+                console.error("Error submitting query:", err);
+                alert("An error occurred while submitting your query. Please try again.");
             }
         });
 
         // Redirect to login page when login modal button is clicked
         document.getElementById("loginRedirectBtn").addEventListener("click", () => {
-            window.location.href = "/oneness-website/login.html"; // Redirect to your login page
+            window.location.href = "/oneness-website/index.html"; // Redirect to your login page
         });
     </script>
     <script src="js/main.js"></script>
