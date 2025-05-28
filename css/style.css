@@ -400,7 +400,8 @@ a {
 }
 
 .nav-link:hover {
-    background-color: #072c17;
+    background-color: white;
+    color: var(--primary-green);
 }
 
 .contact-btn {
