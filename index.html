@@ -566,11 +566,11 @@
 
         let isOtpVerified = false; // Flag to track OTP verification
 
+        let email;
 
         // Check if OTP is verified
         document.getElementById("sendOtpBtn").addEventListener("click", async () => {
-            const email = document.getElementById("email").value;
-
+            email = document.getElementById("email").value;
             if (!email) {
                 alert("Please enter a valid email address.");
                 return;
@@ -578,7 +578,7 @@
 
             try {
                 // Send OTP to the email
-                const otpResponse = await fetch(`${API_BASE_URL}/api/v1/queries/sendOtp/{email}`, {
+                const otpResponse = await fetch(`https://solar-power-698w.onrender.com/api/v1/queries/sendOtp/${email}`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -599,7 +599,6 @@
         });
         document.getElementById("verifyOtpBtn").addEventListener("click", async () => {
             const otp = document.getElementById("otpInput").value;
-
             if (!otp) {
                 alert("Please enter the OTP.");
                 return;
@@ -607,17 +606,19 @@
 
             try {
                 // Verify the OTP
-                const verifyResponse = await fetch(`${API_BASE_URL}/api/v1/users/verifyVerificationOtp/{email}/{otp}`, {
+                const verifyResponse = await fetch(`https://solar-power-698w.onrender.com/api/v1/queries/verifyOtp?email=${email}&otp=${otp}`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({ otp })
+                    body: JSON.stringify({ email: email, otp: otp }) // Include both email and otp
                 });
 
                 if (verifyResponse.ok) {
                     alert("Email verified successfully!");
                     document.getElementById("formFields").style.display = "block"; // Enable the rest of the form
+                    isOtpVerified = true; // Set OTP verification flag to true
+
                 } else {
                     alert("Invalid OTP. Please try again.");
                 }
@@ -644,7 +645,7 @@
 
             try {
                 // Send form data to the backend
-                const response = await fetch("/api/feedbacks", {
+                const response = await fetch("/api/v1/feedbacks", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",

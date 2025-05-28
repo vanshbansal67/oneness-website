@@ -369,9 +369,9 @@
     <script>
         const API_BASE_URL = "https://solar-power-698w.onrender.com";
         let isOtpVerified = false; // Flag to track OTP verification
-
+        let email;
         document.getElementById("sendOtpBtn").addEventListener("click", async () => {
-            const email = document.getElementById("email").value;
+            email = document.getElementById('email').value;
 
             if (!email) {
                 alert("Please enter a valid email address.");
@@ -380,17 +380,17 @@
 
             try {
                 // Send OTP to the email
-                const otpResponse = await fetch(`${API_BASE_URL}/api/v1/queries/sendOtp/{email}`, {
-                    method: "POST",
+                const otpResponse = await fetch(`https://solar-power-698w.onrender.com/api/v1/queries/sendOtp/${email}`, {
+                    method: 'POST',
                     headers: {
-                        "Content-Type": "application/json"
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({ email })
                 });
 
                 if (otpResponse.ok) {
                     alert("OTP sent to your email. Please check your inbox.");
-                    document.getElementById("otpSection").style.display = "block"; // Show OTP input section
+                    document.getElementById('otpSection').style.display = "block"; // Show OTP input section
                 } else {
                     alert("Failed to send OTP. Please try again.");
                 }
@@ -401,7 +401,7 @@
         });
 
         document.getElementById("verifyOtpBtn").addEventListener("click", async () => {
-            const otp = document.getElementById("otpInput").value;
+            const otp = document.getElementById('otpInput').value;
 
             if (!otp) {
                 alert("Please enter the OTP.");
@@ -410,12 +410,12 @@
 
             try {
                 // Verify the OTP
-                const verifyResponse = await fetch(`${API_BASE_URL}/api/v1/users/verifyVerificationOtp/{email}/{otp}`, {
-                    method: "POST",
+                const verifyResponse = await fetch(`https://solar-power-698w.onrender.com/api/v1/queries/verifyOtp?${email}&${otp}`, {
+                    method: 'POST',
                     headers: {
-                        "Content-Type": "application/json"
+                        'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ otp })
+                    body: JSON.stringify({ email: email, otp: otp })
                 });
 
                 if (verifyResponse.ok) {

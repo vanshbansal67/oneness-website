@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+
+            <div class="testimonial-slider">
+                <!-- <div class="testimonial-item active">
+                    <div class="testimonial-img">
+                        <img src="images/Logo-OneNess.png" alt="Customer">
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"Oneness Solar Power transformed our home's energy consumption. The
+                        installation was professional and quick, and we're saving significantly on our electricity
+                        bills."
+                    </p>
+                    <h4 class="testimonial-name">Rajesh Sharma</h4>
+                    <p class="testimonial-location">Delhi</p>
+                </div>
+
+                <div class="testimonial-item">
+                    <div class="testimonial-img">
+                        <img src="images/Logo-OneNess.png" alt="Customer">
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">"As a farm owner, I was skeptical about solar energy. Oneness team
+                        explained
+                        everything clearly and now my agricultural operations run almost entirely on solar power.
+                        Excellent
+                        service!"</p>
+                    <h4 class="testimonial-name">Sukhbir Singh</h4>
+                    <p class="testimonial-location">Punjab</p>
+                </div>
+
+                <div class="testimonial-item">
+                    <div class="testimonial-img">
+                        <img src="images/Logo-OneNess.png" alt="Customer">
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-text">"Our manufacturing facility's energy costs were skyrocketing. Oneness
+                        designed a custom industrial solar solution that has reduced our costs by 60%. Their after-sales
+                        service is impeccable."</p>
+                    <h4 class="testimonial-name">Priya Patel</h4>
+                    <p class="testimonial-location">Gujarat</p>
+                </div> -->
+
+                <div class="slider-controls">
+                    <button class="slider-control prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="slider-control next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById("feedbackForm").addEventListener("submit", async (event) => {
+            event.preventDefault(); // Prevent default form submission
+
+            // Collect form data
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const rating = document.getElementById("rating").value;
+            const feedback = document.getElementById("feedback").value;
+
+            // Validate inputs
+            // if (!name || !email || !rating || !feedback) {
+            //     alert("Please fill out all fields.");
+            //     return;
+            // }
+
+            // Prepare data for API
+            const feedbackData = {
+                name: name,
+                email: email,
+                rating: rating,
+                feedbackMessage: feedback
+            };
+
+            try {
+                // Send feedback to the API
+                const response = await fetch('https://solar-power-698w.onrender.com/api/v1/feedbacks', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(feedbackData)
+                });
+
+                if (response.ok) {
+                    alert("Thank you for your feedback!");
+                    document.getElementById("feedbackForm").reset(); // Reset the form
+
+                    // Dynamically add the feedback to the testimonial section
+                    addFeedbackToTestimonials(feedbackData);
+                    console.log("added successfully");
+
+                } else {
+                    const errorData = await response.json();
+                    alert(`Failed to submit feedback: ${errorData.message}`);
+                }
+            } catch (err) {
+                console.error("Error submitting feedback:", err);
+                alert("An error occurred while submitting your feedback. Please try again.");
+            }
+        });
+        // Function to Fetch Feedbacks from the Backend (GET)
+        async function fetchFeedbacks() {
+            try {
+                const response = await fetch('https://solar-power-698w.onrender.com/api/v1/feedbacks', {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+
+                if (response.ok) {
+                    const feedbacks = await response.json(); // Parse the JSON response
+                    console.log("Feedbacks fetched successfully:", feedbacks);
+                    // Display feedbacks on the page
+
+
+                    displayFeedbacks(feedbacks); // Call a function to display feedbacks on the page
+                    console.log("Feedbacks displayed successfully");
+
+                } else {
+                    console.error("Failed to fetch feedbacks:", await response.json());
+                }
+            } catch (err) {
+                console.error("Error fetching feedbacks:", err);
+            }
+        }
+        // Function to Display Feedbacks on the Page
+        function displayFeedbacks(feedbacks) {
+            const testimonialSlider = document.querySelector(".testimonial-slider");
+            // testimonialSlider.innerHTML = ""; // Clear existing testimonials
+
+            feedbacks.forEach((feedbackData) => {
+                // Create a new testimonial item
+                const testimonialItem = document.createElement("div");
+                testimonialItem.classList.add("testimonial-item");
+
+                // Set the inner HTML of the new testimonial item
+                testimonialItem.innerHTML = `
+            <div class="testimonial-img">
+                <img src="images/Logo-OneNess.png" alt="Customer">
+            </div>
+            <div class="testimonial-rating">
+                ${generateStars(feedbackData.rating)}
+            </div>
+            <p class="testimonial-text">"${feedbackData.feedbackMessage}"</p>
+            <h4 class="testimonial-name">${feedbackData.name}</h4>
+            <p class="testimonial-location">New Feedback</p>
+        `;
+
+                // Append the new testimonial item to the slider
+                testimonialSlider.appendChild(testimonialItem);
+            });
+        }
+        // Function to Dynamically Add Feedback to the Testimonial Section
+        function addFeedbackToTestimonials(feedbackData) {
+            const testimonialSlider = document.querySelector(".testimonial-slider");
+
+            // Create a new testimonial item
+            const testimonialItem = document.createElement("div");
+            testimonialItem.classList.add("testimonial-item");
+
+            // Set the inner HTML of the new testimonial item
+            testimonialItem.innerHTML = `
+        <div class="testimonial-img">
+            <img src="images/Logo-OneNess.png" alt="Customer">
+        </div>
+        <div class="testimonial-rating">
+            ${generateStars(feedbackData.rating)}
+        </div>
+        <p class="testimonial-text">"${feedbackData.feedbackMessage}"</p>
+        <h4 class="testimonial-name">${feedbackData.name}</h4>
+        <p class="testimonial-location">New Feedback</p>
+    `;
+
+            // Append the new testimonial item to the slider
+            testimonialSlider.appendChild(testimonialItem);
+        }
+
+
+        // Function to generate star ratings
+        function generateStars(rating) {
+            let stars = "";
+            for (let i = 0; i < rating; i++) {
+                stars += `<i class="fas fa-star"></i>`;
+            }
+            for (let i = rating; i < 5; i++) {
+                stars += `<i class="far fa-star"></i>`;
+            }
+            return stars;
+        }
+
+        // Call fetchFeedbacks when the page loads
+        document.addEventListener("DOMContentLoaded", fetchFeedbacks);
+    </script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

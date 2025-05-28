@@ -258,4 +258,3 @@ function countUp(element, start, end, duration, suffix = '') {
 
 
 
-z
