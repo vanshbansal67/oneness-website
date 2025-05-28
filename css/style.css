@@ -252,10 +252,7 @@ a {
         padding: 11px 33px;
     }
 
-    /* .nav-container {
-        width: 100%;
-        max-width: 100vh;
-    } */
+   
 }
 
 
@@ -479,7 +476,6 @@ footer {
 
 /* Page1 Css */
 .Home {
-    /* margin-top: 20vh; */
     height: 100%;
     width: 100%;
     position: relative;
@@ -510,7 +506,6 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* width: 700px; */
 }
 
 .text-overlay {
@@ -591,7 +586,6 @@ span {
 }
 
 .btn:hover {
-    /* background-color: #085116; */
     transform: translateY(3px);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     background-color: #252F24;
@@ -707,7 +701,6 @@ span {
 }
 
 .stat-text {
-    /* color: white; */
     font-size: 18px;
     line-height: 1.4;
 }
@@ -1231,45 +1224,6 @@ textarea.form-control {
     color: #666;
 }
 
-
-
-/* Installation Process Section
-.process-tabs {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 40px;
-}
-
-.tab-btn {
-    padding: 12px 25px;
-    background-color: #e0e0e0;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.tab-btn:first-child {
-    border-radius: 8px 0 0 8px;
-}
-
-.tab-btn:last-child {
-    border-radius: 0 8px 8px 0;
-}
-
-.tab-btn.active {
-    background-color: #106b21;
-    color: white;
-}
-
-.process-content {
-    display: none;
-}
-
-.process-content.active {
-    display: block;
-} */
-
 /* Installation Process Styles */
 .process {
     padding: 40px 20px;
@@ -1343,10 +1297,6 @@ textarea.form-control {
         padding: 15px;
     }
 
-    .timeline-item {
-        /* display: none; */
-    }
-
     .timeline-content h3 {
         font-size: 18px;
     }
@@ -1364,12 +1314,6 @@ textarea.form-control {
     padding-top: 0.8rem;
     padding-bottom: 0.8rem;
 
-}
-
-.features-grid {
-    /* display: grid; */
-    /* grid-template-columns: repeat(3, 1fr); */
-    /* gap: 30px; */
 }
 
 .feature-box {
@@ -1625,7 +1569,6 @@ textarea.form-control {
     background: white;
     padding: 40px;
     border-radius: 15px;
-    /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); */
 }
 
 .section-title {
@@ -1954,12 +1897,10 @@ video {
     }
 
     .left::after {
-        /* right: 0; */
         left: 0;
     }
 
     .right::after {
-        /* left: 0; */
         right: 0;
 
     }
@@ -2022,7 +1963,6 @@ video {
 
 @media (max-width:576px) {
     .project-experience {
-        /* min-height: 95vh; */
         text-align: center;
     }
 }
@@ -2229,7 +2169,6 @@ video {
 .section-title-solar {
     text-align: center;
     margin-bottom: 40px;
-    /* margin-left: 20px; */
 }
 
 
