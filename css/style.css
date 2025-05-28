@@ -179,8 +179,8 @@ a {
 }
 
 .nav-link:hover {
-    background-color:  #286e23 ;
-    color: var(--white) ;
+    background-color: #286e23;
+    color: var(--white);
 }
 
 .contact-btn {
@@ -235,10 +235,7 @@ a {
         margin: 0;
     }
 
-    .mobile-toggle {
-        /* display: none; */
-        /* Hide the toggle button */
-    }
+
 }
 
 /* Desktop and Larger Screens */
@@ -252,10 +249,6 @@ a {
         padding: 11px 33px;
     }
 
-    /* .nav-container {
-        width: 100%;
-        max-width: 100vh;
-    } */
 }
 
 
@@ -510,7 +503,6 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* width: 700px; */
 }
 
 .text-overlay {
@@ -1021,7 +1013,6 @@ textarea.form-control {
     display: flex;
     align-items: center;
     position: relative;
-    /* margin-top: 80px; */
 }
 
 .hero:after {
@@ -1185,7 +1176,6 @@ textarea.form-control {
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    /* gap: 30px; */
 }
 
 .service-card:hover {
@@ -1231,44 +1221,6 @@ textarea.form-control {
     color: #666;
 }
 
-
-
-/* Installation Process Section
-.process-tabs {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 40px;
-}
-
-.tab-btn {
-    padding: 12px 25px;
-    background-color: #e0e0e0;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-
-.tab-btn:first-child {
-    border-radius: 8px 0 0 8px;
-}
-
-.tab-btn:last-child {
-    border-radius: 0 8px 8px 0;
-}
-
-.tab-btn.active {
-    background-color: #106b21;
-    color: white;
-}
-
-.process-content {
-    display: none;
-}
-
-.process-content.active {
-    display: block;
-} */
 
 /* Installation Process Styles */
 .process {
@@ -1364,12 +1316,6 @@ textarea.form-control {
     padding-top: 0.8rem;
     padding-bottom: 0.8rem;
 
-}
-
-.features-grid {
-    /* display: grid; */
-    /* grid-template-columns: repeat(3, 1fr); */
-    /* gap: 30px; */
 }
 
 .feature-box {
@@ -1476,6 +1422,43 @@ textarea.form-control {
     color: #f8ce0b;
     font-size: 1.2rem;
     margin: 10px 0;
+}
+
+.testimonial-item {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 15px;
+    text-align: center;
+}
+
+.testimonial-img img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.testimonial-rating i {
+    color: #fbc02d;
+    /* Gold color for stars */
+    margin: 0 2px;
+}
+
+.testimonial-text {
+    font-style: italic;
+    margin: 15px 0;
+}
+
+.testimonial-name {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.testimonial-location {
+    color: #777;
+    font-size: 0.9rem;
 }
 
 .slider-controls {
@@ -1732,7 +1715,6 @@ textarea.form-control {
 .about-hero p {
     font-size: 1.4rem;
     color: white;
-    /* max-width: 700px; */
 }
 
 video {
@@ -2022,7 +2004,6 @@ video {
 
 @media (max-width:576px) {
     .project-experience {
-        /* min-height: 95vh; */
         text-align: center;
     }
 }
@@ -2554,9 +2535,6 @@ form .linkTxt {
 }
 
 
-
-
-
 .wrapper .rotate-bg {
     position: absolute;
     top: -4px;
@@ -2574,8 +2552,6 @@ form .linkTxt {
     transform: rotate(0) skewY(0);
     transition-delay: 0.5s;
 }
-
-
 
 .wrapper .form-box.register {
     padding: 0 40px 0 60px;
@@ -2630,9 +2606,6 @@ form .linkTxt {
     filter: blur(0);
     transition-delay: calc(.1s * var(--i));
 }
-
-
-
 
 .wrapper .rotate-bg2 {
     position: absolute;

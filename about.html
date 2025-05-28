@@ -25,42 +25,7 @@
     <link rel="stylesheet" href="css/media.css">
     <link rel="stylesheet" href="css/animations.css">
     <style>
-        .testimonial-item {
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            margin: 15px;
-            text-align: center;
-        }
 
-        .testimonial-img img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin-bottom: 15px;
-        }
-
-        .testimonial-rating i {
-            color: #fbc02d;
-            /* Gold color for stars */
-            margin: 0 2px;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin: 15px 0;
-        }
-
-        .testimonial-name {
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        .testimonial-location {
-            color: #777;
-            font-size: 0.9rem;
-        }
     </style>
 
 </head>
@@ -351,56 +316,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
     <script>
-        // document.getElementById("feedbackForm").addEventListener("submit", async (event) => {
-        // event.preventDefault(); // Prevent default form submission
 
-        // // Collect form data
-        // const name = document.getElementById("name").value;
-        // const email = document.getElementById("email").value;
-        // const rating = document.getElementById("rating").value;
-        // const feedback = document.getElementById("feedback").value;
-
-        // // Validate inputs
-        // // if (!name || !email || !rating || !feedback) {
-        // //     alert("Please fill out all fields.");
-        // //     return;
-        // // }
-
-        // // API endpoint
-        // const API_BASE_URL = "https://solar-power-698w.onrender.com";
-        // const feedbackEndpoint = `${API_BASE_URL}/api/v1/feedbacks`;
-
-        // // Prepare data for API
-        // const feedbackData = {
-        //     name: name,
-        //     email: email,
-        //     rating: rating,
-        //     feedbackMessage: feedback
-        // };
-
-        // try {
-        //     // Send feedback to the API
-        //     const response = await fetch('https://solar-power-698w.onrender.com/api/v1/feedbacks', {
-        //         // console.log("Feedback Data:", feedbackData),
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         },
-        //         body: JSON.stringify(feedbackData)
-        //     });
-
-        //     if (response.ok) {
-        //         alert("Thank you for your feedback!");
-        //         document.getElementById("feedbackForm").reset(); // Reset the form
-        //     } else {
-        //         const errorData = await response.json();
-        //         alert(`Failed to submit feedback: ${errorData.message}`);
-        //     }
-        // } catch (err) {
-        //     console.error("Error submitting feedback:", err);
-        //     alert("An error occurred while submitting your feedback. Please try again.");
-        // }
-        // });
         document.getElementById("feedbackForm").addEventListener("submit", async (event) => {
             event.preventDefault(); // Prevent default form submission
 
@@ -409,12 +325,6 @@
             const email = document.getElementById("email").value;
             const rating = document.getElementById("rating").value;
             const feedbackMessage = document.getElementById("feedback").value;
-
-            // Validate inputs
-            // if (!name || !email || !rating || !feedbackMessage || rating === "") {
-            //     alert("Please fill out all fields, including a valid rating.");
-            //     return;
-            // }
 
             // Prepare data for API
             const feedbackData = {
@@ -476,61 +386,9 @@
 
                 }
             } catch (err) {
-                // console.error("Error fetching feedbacks:", err);
-                // alert("Failed to load feedbacks. Please try again later.");
 
             }
         }
-
-        // function displayFeedbacks(feedbacks) {
-        //     const feedbackContainer = document.getElementById("feedbackContainer"); // Add a container in your HTML
-        //     feedbackContainer.innerHTML = ""; // Clear existing feedbacks
-
-        //     feedbacks.forEach((feedback) => {
-        //         const feedbackElement = document.createElement("div");
-        //         feedbackElement.classList.add("feedback-item");
-        //         feedbackElement.innerHTML = `
-        //     <h4>${feedback.name} (${feedback.rating} Stars)</h4>
-        //     <p>${feedback.feedbackMessage}</p>       
-        //      `;
-        //         feedbackContainer.appendChild(feedbackElement);
-        //     });
-        // }
-        // function displayFeedbacks(feedbacks) {
-        //     console.log("displayFeedbacks function called with feedbacks:", feedbacks); // Debugging
-
-        //     const feedbackContainer = document.getElementById("feedbackContainer");
-        //     feedbackContainer.innerHTML = ""; // Clear existing feedbacks
-
-        //     feedbacks.forEach((feedback, index) => {
-        //         console.log("Processing feedback:", feedback); // Debugging
-
-        //         const feedbackElement = document.createElement("div");
-        //         feedbackElement.classList.add("carousel-item");
-        //         if (index === 0) {
-        //             feedbackElement.classList.add("active"); // Make the first item active
-        //         }
-
-        //         feedbackElement.innerHTML = `
-        //     <div class="testimonial-item">
-        //         <div class="testimonial-img">
-        //             <img src="images/Logo-OneNess.png" alt="Customer">
-        //         </div>
-        //         <div class="testimonial-rating">
-        //             ${generateStars(feedback.rating)}
-        //         </div>
-        //         <p class="testimonial-text">"${feedback.feedbackMessage}"</p>
-        //         <h4 class="testimonial-name">${feedback.name}</h4>
-        //         <p class="testimonial-location">User Feedback</p>
-        //     </div>
-        // `;
-
-        //         feedbackContainer.appendChild(feedbackElement);
-        //     });
-
-        //     console.log("Feedbacks appended to container:", feedbackContainer.innerHTML); // Debugging
-        // }
-
 
         function displayFeedbacks(feedbacks) {
             const testimonialSlider = document.querySelector(".testimonial-slider");
@@ -557,41 +415,7 @@
             // Reinitialize the slider
             showSlide(currentSlide);
         }
-        // function displayFeedbacks(feedbacks) {
-        //     const testimonialSlider = document.querySelector(".testimonial-slider");
 
-        //     // Clear all previously added feedback items, but keep slider controls
-        //     const staticItems = testimonialSlider.querySelectorAll(".testimonial-item");
-        //     staticItems.forEach(item => item.remove());
-
-        //     // Dynamically add feedbacks
-        //     feedbacks.forEach((feedback, index) => {
-        //         const feedbackElement = document.createElement("div");
-        //         feedbackElement.classList.add("testimonial-item");
-
-        //         // ✅ Corrected: Mark first one as active
-        //         if (index === 0) {
-        //             feedbackElement.classList.add("active");
-        //         }
-
-        //         feedbackElement.innerHTML = `
-        //     <div class="testimonial-img">
-        //         <img src="images/Logo-OneNess.png" alt="Customer">
-        //     </div>
-        //     <div class="testimonial-rating">
-        //         ${generateStars(feedback.rating)}
-        //     </div>
-        //     <p class="testimonial-text">"${feedback.feedbackMessage}"</p>
-        //     <h4 class="testimonial-name">${feedback.name}</h4>
-        //     <p class="testimonial-location">User Feedback</p>
-        // `;
-        //         testimonialSlider.prepend(feedbackElement);
-
-        //     });
-        //     index = 0
-        //     showSlide(index); // Show the first slide
-        //     console.log("Feedbacks appended to slider:", testimonialSlider.innerHTML); // Debugging
-        // }
         function addFeedbackToSlider(feedback) {
             const testimonialSlider = document.querySelector(".testimonial-slider");
 

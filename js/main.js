@@ -70,18 +70,6 @@ function loadComponent(url, elementId, callback = null) {
     xhr.send();
 }
 
-
-// Media JS
-// function toggleMenu() {
-//     const navLinks = document.getElementById('navLinks');
-//     // const contactBtn = document.getElementById('contactBtn');
-//     navLinks.classList.toggle('show');
-//     // contactBtn.classList.toggle('show');
-// }
-// function toggleMenu() {
-//     const navLinks = document.getElementById('navLinks');
-//     navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-// }
 function toggleMenu() {
     const navLinks = document.querySelector('.nav-links');
     navLinks.classList.toggle('active');
@@ -99,38 +87,7 @@ cards.forEach(card => {
     });
 });
 
-// Testimonial Slider
-// const testimonials = document.querySelectorAll('.testimonial-item');
-// const prevBtn = document.querySelector('.prev-btn');
-// const nextBtn = document.querySelector('.next-btn');
-// let currentSlide = 0;
 
-// function showSlide(index) {
-//     testimonials.forEach(testimonial => testimonial.classList.remove('active'));
-
-//     if (index < 0) {
-//         currentSlide = testimonials.length - 1;
-//     } else if (index >= testimonials.length) {
-//         currentSlide = 0;
-//     } else {
-//         currentSlide = index;
-//     }
-
-//     testimonials[currentSlide].classList.add('active');
-// }
-
-// prevBtn.addEventListener('click', () => {
-//     showSlide(currentSlide - 1);
-// });
-
-// nextBtn.addEventListener('click', () => {
-//     showSlide(currentSlide + 1);
-// });
-
-// // Auto slide testimonials
-// setInterval(() => {
-//     showSlide(currentSlide + 1);
-// }, 5000);
 
 let testimonials = document.querySelectorAll('.testimonial-item');
 const prevBtn = document.querySelector('.prev-btn');

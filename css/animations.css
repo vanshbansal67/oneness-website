@@ -106,23 +106,7 @@
     animation: pulse 2s infinite;
 }
 
-/* 
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7);
-    }
 
-    70% {
-        transform: scale(1.05);
-        box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
-    }
-
-    100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
-    }
-} */
 
 /* Floating Animation for Icons */
 .float {
@@ -309,20 +293,6 @@
         opacity: 1;
     }
 }
-
-/* @keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
-
-    100% {
-        transform: scale(1);
-    }
-} */
 
 @keyframes bounce {
 
