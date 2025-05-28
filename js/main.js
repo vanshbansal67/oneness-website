@@ -100,10 +100,46 @@ cards.forEach(card => {
 });
 
 // Testimonial Slider
-const testimonials = document.querySelectorAll('.testimonial-item');
+// const testimonials = document.querySelectorAll('.testimonial-item');
+// const prevBtn = document.querySelector('.prev-btn');
+// const nextBtn = document.querySelector('.next-btn');
+// let currentSlide = 0;
+
+// function showSlide(index) {
+//     testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+
+//     if (index < 0) {
+//         currentSlide = testimonials.length - 1;
+//     } else if (index >= testimonials.length) {
+//         currentSlide = 0;
+//     } else {
+//         currentSlide = index;
+//     }
+
+//     testimonials[currentSlide].classList.add('active');
+// }
+
+// prevBtn.addEventListener('click', () => {
+//     showSlide(currentSlide - 1);
+// });
+
+// nextBtn.addEventListener('click', () => {
+//     showSlide(currentSlide + 1);
+// });
+
+// // Auto slide testimonials
+// setInterval(() => {
+//     showSlide(currentSlide + 1);
+// }, 5000);
+
+let testimonials = document.querySelectorAll('.testimonial-item');
 const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
 let currentSlide = 0;
+
+function updateTestimonials() {
+    testimonials = document.querySelectorAll('.testimonial-item'); // Re-fetch all testimonials
+}
 
 function showSlide(index) {
     testimonials.forEach(testimonial => testimonial.classList.remove('active'));
@@ -129,10 +165,14 @@ nextBtn.addEventListener('click', () => {
 
 // Auto slide testimonials
 setInterval(() => {
+    updateTestimonials(); // Ensure the testimonials array is updated
     showSlide(currentSlide + 1);
 }, 5000);
 
-
+function reinitializeSlider() {
+    updateTestimonials(); // Update the testimonials array
+    showSlide(currentSlide); // Ensure the current slide is displayed
+}
 
 function setUpCalculator() {
     // Solar Calculator Logic
