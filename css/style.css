@@ -400,7 +400,8 @@ a {
 }
 
 .nav-link:hover {
-    background-color: #072c17;
+    background-color: white;
+    color: var(--primary-green);
 }
 
 .contact-btn {
@@ -2882,15 +2883,4 @@ form .linkTxt {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-}
-
-.testimonial-item {
-    display: none;
-    /* Hide all items by default */
-    transition: opacity 0.5s ease-in-out;
-}
-
-.testimonial-item.active {
-    display: block;
-    /* Show the active item */
 }
