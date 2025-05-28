@@ -400,8 +400,8 @@ a {
 }
 
 .nav-link:hover {
-    background-color: white;
-    color: var(--primary-green);
+    background-color: var(--light-green) ;
+    color: var(--text-light) ;
 }
 
 .contact-btn {
