@@ -18,7 +18,17 @@ function loadComponent(url, elementId) {
     };
     xhr.send();
 }
+document.querySelector(".popup").addEventListener("click", function () {
+    const toggler = this;
 
+    // Move the toggler fully into view
+    toggler.style.left = "0";
+
+    // After 3 seconds, move it back outside the screen
+    setTimeout(() => {
+        toggler.style.left = "-100px"; // Adjust position based on screen size
+    }, 3000); // 3 seconds delay
+});
 document.addEventListener('DOMContentLoaded', function () {
     loadComponent('navbar.html', 'NavAdder');
     // loadComponent('solar-calculator.html', 'SolarCalculatorLoader');

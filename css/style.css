@@ -2295,11 +2295,26 @@ video {
     z-index: 20;
     position: fixed;
     transition: left 0.5s ease;
-    /* padding-right: 2px; */
+    /* Smooth transition for hover and click */
 }
 
 .popup:hover {
     left: 0;
+    /* Move fully into view on hover */
+}
+
+@media (max-width: 576px) {
+    .popup {
+        left: -100px;
+        /* Adjust position for smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .popup {
+        left: -100px;
+        /* Adjust position for tablet screens */
+    }
 }
 
 .popup a h1 {
