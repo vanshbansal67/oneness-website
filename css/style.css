@@ -2286,15 +2286,16 @@ video {
 
 .popup {
     height: 50px;
-    width: 125px;
+    width: 150px;
     background-color: #a5613e;
     top: 50%;
-    left: -80px;
+    left: -100px;
     /* Default position: slightly outside the view */
-    transform: translateY(-50%);
+    transform: translateY(-40%);
     z-index: 20;
     position: fixed;
     transition: left 0.5s ease;
+    /* padding-right: 2px; */
 }
 
 .popup:hover {
@@ -2308,16 +2309,17 @@ video {
 
 .popup a i {
     font-size: 30px;
+    /* padding: 2px; */
 }
 
 .popup a {
     text-decoration: none;
     color: white;
-    font-size: 25px;
+    /* font-size: 25px; */
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
-    text-align: center;
+    /* text-align: center; */
 }
 
 
