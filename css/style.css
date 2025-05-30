@@ -2289,7 +2289,7 @@ video {
     width: 125px;
     background-color: #a5613e;
     top: 50%;
-    left: -90px;
+    left: -80px;
     /* Default position: slightly outside the view */
     transform: translateY(-50%);
     z-index: 20;
