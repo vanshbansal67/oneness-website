@@ -501,11 +501,12 @@
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone</label>
-                            <input type="tel" id="phone" class="form-control" placeholder="Your Phone Number" required>
+                            <input type="tel" id="phone" class="form-control" placeholder="Your Phone Number" disabled
+                                required>
                         </div>
                         <div class="form-group">
                             <label for="service">Service Interested In</label>
-                            <select id="service" class="form-control" required>
+                            <select id="service" class="form-control" disabled required>
                                 <option value="">Select a Service</option>
                                 <option value="residential">Residential Solar</option>
                                 <option value="commercial">Commercial Solar</option>
@@ -515,14 +516,14 @@
                         </div>
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" class="form-control" placeholder="Your Message"></textarea>
+                            <textarea id="message" class="form-control" placeholder="Your Message" disabled></textarea>
                         </div>
-                        <button type="submit" id="sendMessageBtn" class="submit-btn">Send Message</button>
+                        <button type="submit" id="sendMessageBtn" class="submit-btn" disabled>Send Message</button>
                     </form>
-                    <div id="loginModal" style="display: none;">
+                    <!-- <div id="loginModal" style="display: none;">
                         <h2>Login Required</h2>
                         <button id="loginRedirectBtn">Go to Login</button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -577,6 +578,7 @@
         });
         document.getElementById("verifyOtpBtn").addEventListener("click", async () => {
             const otp = document.getElementById("otpInput").value;
+            isOtpVerified = false;
             if (!otp) {
                 alert("Please enter the OTP.");
                 return;
@@ -594,9 +596,9 @@
 
                 if (verifyResponse.ok) {
                     alert("Email verified successfully!");
-                    document.getElementById("formFields").style.display = "block"; // Enable the rest of the form
                     isOtpVerified = true; // Set OTP verification flag to true
-
+                    document.querySelectorAll("#feedbackForm input, #feedbackForm select, #feedbackForm textarea, #sendMessageBtn")
+                        .forEach(field => field.disabled = false);
                 } else {
                     alert("Invalid OTP. Please try again.");
                 }
@@ -607,6 +609,7 @@
         });
 
         document.getElementById("feedbackForm").addEventListener("submit", async (event) => {
+            // let isOtpVerified = true;
             event.preventDefault(); // Prevent default form submission
             if (!isOtpVerified) {
                 alert("Please verify your email before submitting the form.");
@@ -623,7 +626,7 @@
 
             try {
                 // Send form data to the backend
-                const response = await fetch("/api/v1/feedbacks", {
+                const response = await fetch("https://solar-power-698w.onrender.com/api/v1/queries/sendQuery", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -631,12 +634,14 @@
                     body: JSON.stringify(feedbackData)
                 });
 
-                if (response.status === 401) {
-                    // User is not logged in
-                    document.getElementById("loginModal").style.display = "block";
-                } else if (response.ok) {
+                if (response.ok) {
                     alert("Thank you! Your query has been submitted.");
                     document.getElementById("feedbackForm").reset(); // Clear form after submission
+                    // Disable the form again for security
+                    document.querySelectorAll("#feedbackForm input, #feedbackForm select, #feedbackForm textarea, #sendMessageBtn")
+                        .forEach(field => field.disabled = true);
+
+                    isOtpVerified = false; // Reset OTP verification flag
                 } else {
                     const error = await response.json();
                     alert("Error: " + error.message);
@@ -648,9 +653,9 @@
         });
 
         // Redirect to login page when login modal button is clicked
-        document.getElementById("loginRedirectBtn").addEventListener("click", () => {
-            window.location.href = "/oneness-website/index.html"; // Redirect to your login page
-        });
+        // document.getElementById("loginRedirectBtn").addEventListener("click", () => {
+        //     window.location.href = "/oneness-website/index.html"; // Redirect to your login page
+        // });
     </script>
     <script src="js/main.js"></script>
 

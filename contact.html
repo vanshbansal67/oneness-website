@@ -115,14 +115,14 @@
                                     <div class="mb-3">
                                         <label for="firstName" class="form-label">First Name*</label>
                                         <input type="text" class="form-control" id="firstName"
-                                            placeholder="Your first name" required>
+                                            placeholder="Your first name" disabled required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="lastName" class="form-label">Last Name</label>
                                         <input type="text" class="form-control" id="lastName"
-                                            placeholder="Your last name">
+                                            placeholder="Your last name" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -404,12 +404,14 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ email: email, otp: otp })
+                    body: JSON.stringify({ email, otp })
                 });
 
                 if (verifyResponse.ok) {
                     alert("Email verified successfully!");
-                    document.getElementById("formFields").style.display = "block"; // Enable the rest of the form
+                    isOtpVerified = true; // Set OTP verification flag to true
+                    document.querySelectorAll("#contactForm input, #contactForm select, #contactForm textarea, #contactForm button[type='submit']")
+                        .forEach(field => field.disabled = false);
                 } else {
                     alert("Invalid OTP. Please try again.");
                 }
@@ -439,7 +441,7 @@
 
             try {
                 // Submit the form data to the backend
-                const response = await fetch(`https://solar-power-698w.onrender.com/api/v1/queries/sendQuery`, {
+                const response = await fetch("https://solar-power-698w.onrender.com/api/v1/queries/sendQuery", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -450,6 +452,11 @@
                 if (response.ok) {
                     alert("Your query has been submitted successfully!");
                     document.getElementById("contactForm").reset();
+                    // Disable the form again for security
+                    document.querySelectorAll("#contactForm input, #contactForm select, #contactForm textarea, #contactForm button[type='submit']")
+                        .forEach(field => field.disabled = true);
+
+                    isOtpVerified = false; // Reset OTP verification flag
                 } else {
                     alert("Failed to submit your query. Please try again.");
                 }
