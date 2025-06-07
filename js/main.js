@@ -6,18 +6,37 @@ AOS.init({
 
 
 // Navbar Loader
+// function loadComponent(url, elementId) {
+//     var xhr = new XMLHttpRequest();
+//     xhr.open('GET', url, true);
+//     xhr.onreadystatechange = function () {
+//         if (this.readyState === 4 && this.status === 200) {
+//             document.getElementById(elementId).innerHTML = this.responseText;
+//         } else if (this.readyState === 4) {
+//             console.error(`Error loading ${url}`);
+//         }
+//     };
+//     xhr.send();
+// }
+
 function loadComponent(url, elementId) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
-    xhr.onreadystatechange = function () {
-        if (this.readyState === 4 && this.status === 200) {
-            document.getElementById(elementId).innerHTML = this.responseText;
-        } else if (this.readyState === 4) {
-            console.error(`Error loading ${url}`);
-        }
-    };
-    xhr.send();
+    console.log(`Loading component from ${url} into ${elementId}`);
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to load ${url}: ${response.statusText}`);
+            }
+            return response.text();
+        })
+        .then(html => {
+            document.getElementById(elementId).innerHTML = html;
+        })
+        .catch(error => {
+            console.error("Error loading component:", error);
+        });
 }
+
+// Load
 document.querySelector(".popup").addEventListener("click", function () {
     const toggler = this;
 
