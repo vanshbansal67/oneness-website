@@ -232,7 +232,7 @@ function setupStatsObserver() {
 
                 if (experience) countUp(experience, 0, 7, 2000, '+');
                 if (customers) countUp(customers, 0, 1500, 2500, '+');
-                if (installations) countUp(installations, 0, 8000, 3000, '+');
+                if (installations) countUp(installations, 0, 600, 3000, '+');
 
                 observer.unobserve(entry.target);
             }
