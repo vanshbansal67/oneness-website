@@ -4,4 +4,4 @@ Digital portal for Solar EPC providers to manage residential and commercial inst
 
 - **Tech:** HTML5, CSS3, Bootstrap 5.
 - **Key Feature:** Lead-capture modules & dynamic project galleries.
-- **Developer:** [Vanshaj Bansal](https://vansajbansal.vercel.app/)
+- **Developer:** [Vanshaj Bansal](https://vanshajbansal.tech)
